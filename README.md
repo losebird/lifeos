@@ -1,13 +1,13 @@
 <p align="center"><img src="Meta/attachments/cover.png" alt="Compass" width="100%"></p>
 <!-- Fallback if the PNG is missing: <p align="center"><img src="Meta/attachments/cover.svg" alt="Compass" width="100%"></p> -->
 
-# Compass
+# Life OS
 
 *Run your whole life out of Obsidian: one honest question set a night, everything else follows.*
 
-Compass is a complete Obsidian vault template of the system Mike Schmitz describes in "How I Run My Whole Life Out of Obsidian": journaling with daily questions, quarterly personal retreats, multi-scale planning, habit tracking, daily reading, task management, writing boards, and a DataviewJS dashboard that ties it together. On top of that sits an AI assistant that lives in the vault, reads `AGENTS.md`, and runs a library of prompts for the recurring jobs. Everything is plain Markdown and properties; the ten plugins it needs ship inside the folder with their licenses.
+Compass is a complete Obsidian vault template of the system Mike Schmitz describes in "How I Run My Whole Life Out of Obsidian": journaling with daily questions, quarterly personal retreats, multi-scale planning, habit tracking, daily reading, task management, writing boards, and a DataviewJS dashboard that ties it together. The first-party Life OS application now sits above those workflows, with an AI assistant that reads `AGENTS.md` and runs a library of approval-aware prompts. Everything remains plain Markdown and properties. Ten community plugins and the first-party Life OS plugin ship inside the folder with their licenses.
 
-**Status: public beta.** Version 1.0.2 (2026-08-27). Requires Obsidian 1.13.1 or newer, desktop.
+**Status: development candidate, not a newly accepted public release.** The existing 1.0.2 archives predate the Life OS application. The next template candidate is 1.1.0, subject to packaging and native acceptance. Requires Obsidian 1.13.1 or newer. Core dashboard mobile compatibility needs native testing; Agent Client and the local API bridge are desktop-only.
 
 ## Watch the idea
 
@@ -19,7 +19,7 @@ Video by Mike Schmitz, Practical PKM (published 2026-06-26). Compass is an indep
 
 1. Download the zip from Releases, or clone this repository. The repository root is the vault.
 2. Open the folder in Obsidian (Open folder as vault).
-3. When Obsidian asks about Restricted mode, click **Turn off**. Then run the command **Reload app without saving** so the ten plugins light up.
+3. When Obsidian asks about Restricted mode, click **Turn off**. Then run the command **Reload app without saving** so the ten community plugins and Life OS light up. Life OS opens automatically after reload.
 4. Open `00 Dashboards/Setup.md`. It checks itself and tells you what is left.
 5. Tonight: Ctrl/Cmd+Shift+D opens today's note, Ctrl/Cmd+Shift+Q asks the questions. Answer 1 to 10, write one line under `## Journal`. Stop there. Everything else waits 30 days.
 
@@ -72,7 +72,7 @@ The layering rule: pick one workflow, probably the daily journaling, get it work
 
 ## Plugins included
 
-All ten community plugins are installed under `.obsidian/plugins/` as unmodified release builds, each with a copy of its LICENSE, and are listed as enabled. The Web viewer core plugin is on. Details and the first-open checklist are in `Guide/02 Plugins.md`.
+All ten community plugins are bundled under `.obsidian/plugins/`, each with a recorded version and license, and are listed as enabled. Byte-for-byte upstream provenance is a separate release check. The first-party `life-os-app` plugin is installed alongside them. Details and the first-open checklist are in `Guide/02 Plugins.md`.
 
 | Plugin | Id | Version | License |
 | --- | --- | --- | --- |
@@ -86,6 +86,8 @@ All ten community plugins are installed under `.obsidian/plugins/` as unmodified
 | Local REST API | `obsidian-local-rest-api` | 5.1.0 | MIT |
 | Agent Client | `agent-client` | 0.12.1 | Apache-2.0 |
 | SEO | `seo` | 0.5.6 | MIT |
+
+The first-party Life OS application (`life-os-app`) is separately versioned and licensed under MIT. It is the native navigation, capture, and live-dashboard layer. See `Guide/21 Life OS Application.md`.
 
 Upstream repositories and release tags are in `THIRD_PARTY_NOTICES.md`. Obsidian itself is not included.
 
@@ -104,14 +106,14 @@ Upstream repositories and release tags are in `THIRD_PARTY_NOTICES.md`. Obsidian
 The template is built from the maintainer's live vault, never edited in the built copy:
 
 ```bash
-python3 scripts/build_template.py --out build --zip     # clean copy + verify + zip
-python3 scripts/verify_template.py build/Compass        # re-run the gate on any folder
-python3 scripts/verify_template.py .                    # this repository root is a built copy
+python3 scripts/verify_release_safety.py
+python3 scripts/build_template.py --out ../life-os-releases --name LifeOS-1.1.0-candidate --version 1.1.0 --zip
+python3 scripts/verify_template.py ../life-os-releases/LifeOS-1.1.0-candidate
 ```
 
 `build_template.py` copies with drop rules, keeps only `example`-tagged notes in user folders, resets defaults, strips machine state from plugin settings, adds the version and a one-page workspace, then verifies and zips. `verify_template.py` exits 1 on any failure: forbidden strings (names, paths, keys, certificates, em dashes), plugin settings (Local REST API exactly `{"enableInsecureServer": true}`, Agent Client with no sessions and auto-allow off, Omnisearch HTTP server off, QuickAdd online features off), plugin folders with LICENSE, notices matching manifests, referenced paths and wikilinks resolving, `Meta/views/*.js` syntax under Node, and total size under 20 MB. The `verify` workflow runs it on every push and pull request. Maintainer checklist: `scripts/RELEASE.md`. Changes: `CHANGELOG.md`.
 
-Upgrades overwrite system files (dashboards, views, guide, scripts, plugins) and never touch your notes, `Meta/Compass Config.md`, or `Templates/`. See `Meta/version.md`.
+There is no transactional in-place upgrader. Back up the complete vault, extract a new release beside it, and migrate personal content, custom configuration, and templates with conflict review. Do not replace the working `.obsidian` folder wholesale. A backup is not proven until a restore has been tested. See `scripts/RELEASE.md` and `Guide/23 Native Acceptance.md`.
 
 ## Credits and license
 

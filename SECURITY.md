@@ -1,6 +1,6 @@
 # Security
 
-Compass is a local Obsidian vault. Nothing in it phones home. This page says what listens on your machine, what the template never contains, and how to report a problem.
+Life OS is a local-first Obsidian vault. The first-party dashboard makes no network or provider calls. Optional agents, web browsing, external-link checks, and third-party plugins have their own network behavior. This page describes configured defaults, not a guarantee that every installed component is offline.
 
 ## What the template ships, network-wise
 
@@ -25,7 +25,19 @@ Read `Guide/17 Search Providers.md` and `Guide/19 Obsidian MCP Bridge.md` for th
 - `.vault-meta/` (claude-obsidian journal), `wiki/` content folders, `inbox/` contents, workspace files.
 - Absolute paths, user names, or email addresses.
 
-`scripts/verify_template.py` refuses to build a copy that contains any of these, and `scripts/build_template.py` strips machine state from plugin settings on every build. The `verify` workflow runs the same gate on every push.
+The builder excludes raw plugin settings from copying and reconstructs allowlisted settings before writing staging files. The verifier rejects machine-local state before its content scan and checks the sanitized candidate. These checks reduce risk; they do not replace reviewing an exact candidate before distribution. Never ZIP the working vault directly.
+
+## Context and approval
+
+Assistant workflow buttons explicitly disable automatic sending. Review the prompt and context in the agent composer. The embedded chat uses the hosting Assistant note as context. Agent settings can also include active-note mentions or linked-note expansion; review those settings before sending personal material.
+
+The requirement to approve writes is a policy. Agent Client's automatic-approval setting is observable, but Life OS cannot guarantee how another CLI, MCP client, or agent will act. Configured tooling is not proof of authentication or a tested live connection. No provider test is performed automatically.
+
+## Safe release and recovery
+
+Build only into a fresh directory outside the working vault. Existing destinations are refused. Staging is private and removed on failure. Validate the candidate, archive checksum, and native first-run behavior before sharing it. Keep the working vault and its backups separate from release output.
+
+There is no transactional in-place upgrader. Back up the complete vault, extract a new candidate alongside it, and migrate personal content and custom settings with review. Test a restore before retiring an old copy. See `scripts/RELEASE.md`.
 
 ## Your responsibilities as a member
 

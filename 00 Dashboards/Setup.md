@@ -10,7 +10,7 @@ tags:
 A vault that asks you one honest question set every night. Everything else (planning, habits, tasks, writing, an AI assistant) is layered on top of that, one layer at a time. Compass is based on Mike Schmitz's "How I Run My Whole Life Out of Obsidian"; not affiliated with Practical PKM.
 
 ## Step A: turn plugins on (do this first)
-When you opened this folder, Obsidian showed a box about **Restricted mode**. Click **Turn off**. If you closed it: Settings → Community plugins → **Turn off Restricted mode**. You will see ten plugins listed, already installed. Then press Ctrl/Cmd+P and run **Reload app without saving**.
+When you opened this folder, Obsidian showed a box about **Restricted mode**. Click **Turn off**. If you closed it: Settings → Community plugins → **Turn off Restricted mode**. You will see ten community plugins plus the first-party Life OS plugin, already installed. Then press Ctrl/Cmd+P and run **Reload app without saving**. Life OS opens automatically after reload.
 
 **If the box below shows code instead of a checklist, Step A is not done yet.**
 

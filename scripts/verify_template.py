@@ -2,7 +2,7 @@
 """Gate for a built template folder. Exit 1 on any failure.
     python3 scripts/verify_template.py build/Compass [--json]
 """
-import json, os, re, sys, subprocess
+import json, os, re, sys, subprocess, stat, hashlib
 
 FORBIDDEN = [r"agricidaniel", r"/var/home", r"/home/[a-z]", r"/Users/", r"C:\\\\Users", r"@gmail\.com", r"@proton",
              r"BEGIN CERTIFICATE", r"BEGIN RSA", r"privateKey", r"\"apiKey\": \"[A-Za-z0-9]", r"\bsk-[A-Za-z0-9]{8}", r"AKIA[0-9A-Z]{12}", r"xoxb-", r"ghp_[A-Za-z0-9]",
@@ -21,15 +21,57 @@ def main():
     results = []
     def check(name, ok, detail=""):
         results.append((name, bool(ok), detail))
+    # Reject machine-local input before loading document contents or diagnostics.
+    local_markers = sum(os.path.exists(os.path.join(root, p)) for p in (".vault-meta", ".mcp.json", ".claude/settings.local.json"))
+    settings_risk = False
+    for plugin in ("obsidian-local-rest-api", "agent-client"):
+        p = os.path.join(root, ".obsidian/plugins", plugin, "data.json")
+        if os.path.exists(p):
+            try:
+                with open(p, encoding="utf-8") as stream: state = json.load(stream)
+                settings_risk |= bool(state.get("apiKey") or state.get("crypto") or state.get("savedSessions"))
+            except (ValueError, OSError):
+                settings_risk = True
+    if local_markers or settings_risk:
+        message = {"check": "built-copy preflight", "ok": False, "detail": "Machine-local state detected; content scan skipped. Build a sanitized copy first."}
+        print(json.dumps([message]) if as_json else "FAIL " + message["detail"])
+        sys.exit(1)
     files = []
     for r, ds, fs in os.walk(root):
         ds[:] = [d for d in ds if d != ".git"]
+        if any(os.path.islink(os.path.join(r, item)) for item in ds + fs):
+            print("FAIL package contains symbolic links; content scan skipped")
+            sys.exit(1)
+        if any(not stat.S_ISREG(os.stat(os.path.join(r, item)).st_mode) for item in fs):
+            print("FAIL package contains non-regular files; content scan skipped")
+            sys.exit(1)
         for f in fs: files.append(os.path.relpath(os.path.join(r, f), root))
     files.sort()
+    check("no case-insensitive path collisions", len({p.casefold() for p in files}) == len(files))
+    manifest_path = os.path.join(root, "MANIFEST.sha256")
+    manifest_ok = os.path.isfile(manifest_path)
+    indexed = {}
+    if manifest_ok:
+        with open(manifest_path, encoding="utf-8") as stream:
+            for line in stream:
+                match = re.fullmatch(r"([a-f0-9]{64})  (.+)\n?", line)
+                if not match:
+                    manifest_ok = False; break
+                digest, rel = match.groups()
+                if os.path.isabs(rel) or ".." in rel.split("/") or rel in indexed or rel not in files:
+                    manifest_ok = False; break
+                indexed[rel] = digest
+        manifest_ok = manifest_ok and set(indexed) == set(files) - {"MANIFEST.sha256"}
+        if manifest_ok:
+            for rel, digest in indexed.items():
+                with open(os.path.join(root, rel), "rb") as stream:
+                    if hashlib.sha256(stream.read()).hexdigest() != digest:
+                        manifest_ok = False; break
+    check("embedded manifest covers exact candidate bytes", manifest_ok)
     texts = {}
     for rel in files:
         if any(p in ("/" + rel) for p in SKIP_DIR_PARTS) and not rel.endswith("data.json"): continue
-        if rel.endswith((".md", ".js", ".json", ".css", ".py", ".txt", ".yaml", ".yml")):
+        if rel.endswith((".md", ".js", ".mjs", ".json", ".css", ".py", ".txt", ".yaml", ".yml")):
             try: texts[rel] = open(os.path.join(root, rel), encoding="utf-8").read()
             except Exception: pass
     # forbidden strings
@@ -39,7 +81,7 @@ def main():
     # json asserts
     def load(rel):
         p = os.path.join(root, rel); return json.load(open(p)) if os.path.exists(p) else None
-    ra = load(".obsidian/plugins/obsidian-local-rest-api/data.json"); check("REST API settings are exactly enableInsecureServer:true", ra == {"enableInsecureServer": True}, str(ra)[:80])
+    ra = load(".obsidian/plugins/obsidian-local-rest-api/data.json"); check("REST API settings are exactly enableInsecureServer:true", ra == {"enableInsecureServer": True}, "Unexpected settings shape" if ra != {"enableInsecureServer": True} else "")
     ac = load(".obsidian/plugins/agent-client/data.json")
     check("agent-client: no sessions, auto-allow off, no absolute command", ac is not None and ac.get("savedSessions") == [] and ac.get("autoAllowPermissions") is False and not any(str((pa or {}).get("command", "")).startswith("/") for pa in (ac.get("presetAgents") or {}).values()))
     seo = load(".obsidian/plugins/seo/data.json"); check("seo: no scan cache, scan dir set", seo is not None and "cachedGlobalResults" not in seo and "06 Writing" in seo.get("scanDirectories", ""))
@@ -52,6 +94,18 @@ def main():
     for pid in ids:
         d = os.path.join(root, ".obsidian/plugins", pid)
         check("plugin %s has main.js, manifest.json, LICENSE" % pid, all(os.path.exists(os.path.join(d, f)) for f in ["main.js", "manifest.json", "LICENSE"]))
+    lifeos_verify = os.path.join(root, "scripts", "verify_life_os_app.mjs")
+    if os.path.exists(lifeos_verify):
+        r = subprocess.run(["node", lifeos_verify, root], capture_output=True, text=True)
+        check("Life OS application gate", r.returncode == 0, (r.stdout + r.stderr)[-500:])
+    else:
+        check("Life OS application gate", False, "scripts/verify_life_os_app.mjs missing")
+    assistant_verify = os.path.join(root, "scripts", "verify_assistant_contracts.mjs")
+    if os.path.exists(assistant_verify):
+        r = subprocess.run(["node", assistant_verify, root], capture_output=True, text=True)
+        check("Assistant context and send gate", r.returncode == 0, (r.stdout + r.stderr)[-500:])
+    else:
+        check("Assistant context and send gate", False, "Assistant contract verifier missing")
     # notices match manifests
     notices = texts.get("THIRD_PARTY_NOTICES.md", "")
     for pid in ids:

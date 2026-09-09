@@ -22,22 +22,29 @@
 | --- | --- | --- |
 | **Templater** | `templater-obsidian` | Mike says "template files"; Periodic Notes needs a template engine for the date math in the weekly/quarterly notes, and the Daily Questions Prompt (writing 1 to 10 answers into properties, his "custom shortcut" at 4:29) is a Templater script. Folder templates auto-apply Project, Person, Retreat, and writing templates. |
 
+## First-party application
+| Plugin | ID | Why |
+| --- | --- | --- |
+| **Life OS** | `life-os-app` | Native app shell, persistent navigation, universal capture, live system status, and privacy-preserving workflow panels. It reads the same Markdown and properties as the dashboards and does not create a second database. See [[21 Life OS Application]]. |
+
 Links: QuickAdd https://github.com/chhoumann/quickadd · Periodic Notes https://github.com/liamcain/obsidian-periodic-notes · Tasks https://github.com/obsidian-tasks-group/obsidian-tasks · Dataview https://github.com/blacksmithgu/obsidian-dataview · Kanban https://github.com/mgmeyers/obsidian-kanban · Templater https://github.com/SilentVoid13/Templater
 
 ## First open checklist
-All ten plugins are **already installed** in `.obsidian/plugins/` (Dataview 0.5.x, Templater 2.25, Periodic Notes 0.0.17, QuickAdd 2.23, Tasks 8.4, Kanban 2.0.51) and listed as enabled in `community-plugins.json`.
+All ten community plugins and the first-party Life OS plugin are **already installed** in `.obsidian/plugins/` and listed as enabled in `community-plugins.json`.
 
-1. Settings → Community plugins → **Turn off Restricted mode** (Obsidian asks this once per vault; it is not stored in the vault files). If the plugins do not light up immediately, run the command **Reload app without saving**.
+1. Settings → Community plugins → **Turn off Restricted mode** (Obsidian asks this once per vault; it is not stored in the vault files). If the plugins do not light up immediately, run the command **Reload app without saving**. Life OS opens automatically when the vault layout is ready. You can reopen it later with the compass ribbon icon or **Life OS: Open Life OS home**.
 2. Settings → Appearance → CSS snippets → make sure `lifeos` is on (custom callouts: `reading`, `intention`, `memento`, `theme`).
 3. Templater: confirm **Trigger Templater on new file creation** and **Folder templates** are on.
 4. Periodic Notes: confirm daily `YYYY-MM-DD` → `01 Journal/Daily`, weekly `gggg-[W]ww` → `01 Journal/Weekly`, quarterly `YYYY-[Q]Q` → `01 Journal/Quarterly`, each with its template. The core Daily Notes plugin is off. Note creation goes through the QuickAdd template commands (hotkeys below), which run Templater on the new note; Periodic Notes and the Calendar are used to navigate. If a note opened from a link is empty or shows `<%` code, press `Alt+E` (Templater: Insert template) and pick the template.
-5. QuickAdd: confirm the eight choices show and each has the lightning-bolt "command" toggle on. (The dashboard buttons find choices by name, so ids may change.)
+5. QuickAdd: confirm the twenty choices show and each has the lightning-bolt "command" toggle on. Eight capture into existing notes, four open periodic notes, and eight create Project, Person, creative, book, or study notes from their canonical templates.
 6. Dataview: **Enable JavaScript queries** is on (pre-set).
 7. Open `00 Dashboards/Compass Dashboard.md`. If a widget says "No … found", that is the empty-state message, not an error.
 
 ## Hotkeys (pre-seeded in `.obsidian/hotkeys.json`)
 | Keys | Action |
 | --- | --- |
+| Ctrl/Cmd+Shift+L | Open the Life OS application |
+| Ctrl/Cmd+Shift+C | Open universal Capture |
 | Ctrl/Cmd+Shift+D | Create or open today's daily note (QuickAdd runs the template through Templater) |
 | Ctrl/Cmd+Alt+W | Create or open this week's note |
 | Ctrl/Cmd+Alt+Q | Create or open this quarter's note |
@@ -63,6 +70,14 @@ To update a plugin later use Settings → Community plugins → Check for update
 | 📰 Article idea | `06 Writing/Articles/Article Board.md` | `- [ ] {{VALUE}}` | `## Backlog` |
 | 💡 Project idea | `04 Projects/Projects Board.md` | `- [ ] {{VALUE}}` | `## Ideas` |
 | 📅 Open today's note, 🗓️ this week's, 🧭 this quarter's, 🏕️ New personal retreat | Template choices: create the note from the template in the right folder with the date name, run Templater, open it (or just open it if it exists) | | |
+| 📁 New project | `04 Projects/{{VALUE}}.md` from `Templates/Project.md` | Prompt for the project name, create and open the note; an existing note is never overwritten | |
+| 👤 New person | `05 People/{{VALUE}}.md` from `Templates/Person.md` | Prompt for the person's name, create and open the note; an existing note is never overwritten | |
+| ✉️ New newsletter | `06 Writing/Newsletters/{{VALUE}}.md` from `Templates/Newsletter.md` | Prompt for the title, create and open the draft; an existing note is never overwritten | |
+| 🎬 New video script | `06 Writing/YouTube Scripts/{{VALUE}}.md` from `Templates/YouTube Script.md` | Prompt for the title, create and open the script; an existing note is never overwritten | |
+| 📰 New article | `06 Writing/Articles/{{VALUE}}.md` from `Templates/Article.md` | Prompt for the title, create and open the draft; an existing note is never overwritten | |
+| 🎓 New course lesson | `06 Writing/Course Content/{{VALUE}}.md` from `Templates/Course Lesson.md` | Prompt for the title, create and open the lesson; an existing note is never overwritten | |
+| 📚 New book note | `07 Library/Book Notes/{{VALUE}}.md` from `Templates/Book Note.md` | Prompt for the title, create and open the book note; an existing note is never overwritten | |
+| 📖 New study note | `09 Reading/Study Notes/{{VALUE}}.md` from `Templates/Study Note.md` | Prompt for the title, create and open the study note; an existing note is never overwritten | |
 
 The dashboard's capture buttons find these choices by name at click time, so you can rename ids freely.
 

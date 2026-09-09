@@ -1,11 +1,11 @@
 Plugin: Agent Client 0.12.1 (`agent-client`, https://github.com/RAIT-09/obsidian-agent-client, Apache 2.0, desktop only). It runs a local AI agent (Claude Code, Codex, Gemini CLI, and others) over the Agent Client Protocol and puts the chat in the sidebar, in a tab, in a floating window, or inside a note.
 
 ## What it adds to Compass
-- Talk to Claude Code about the note you are looking at (auto-mentioned) and `@`-mention any other note.
-- Every edit is shown as a diff and needs your approval (auto-allow is off by default; keep it off).
+- Talk to a configured agent and explicitly mention the notes you intend to share. The embedded Assistant chat uses its hosting note as context; active-note and linked-note behavior depends on client settings.
+- Keep automatic approvals off. Asking before edits is a policy, not a guarantee enforced across every external client or agent.
 - Prepared prompts as buttons on [[Assistant]] and the [[Compass Dashboard]]: weekly review, retreat prep, "what matters today", writing help.
 - The vault root `AGENTS.md` (pointed to by `CLAUDE.md` and `GEMINI.md`) is read at the start of each session. It tells the agent the folder map, the property conventions, and what never to touch. Edit it when you change the system. Recurring jobs are in `Prompts/` ([[20 Prompt Library]]).
-- With `.claude/settings.json` (shipped) read-only MCP tools are pre-approved; every write still asks. Together with the claude-obsidian plugin (see [[15 claude-obsidian]]), Claude Code also gets vault skills (`/save`, `/wiki-query`, ingest, lint).
+- The shipped `.claude/settings.json` contains a read-only MCP allowlist. Effective permissions also depend on the client and its other settings. The optional claude-obsidian integration supplies knowledge workflows; see [[15 claude-obsidian]].
 - With the Obsidian MCP bridge (see [[19 Obsidian MCP Bridge]]) the agent can open notes and boards, run any Obsidian command, search, and patch notes from inside the chat.
 
 ## Setup (once per machine)
@@ -28,7 +28,7 @@ To verify: open the Agent Client chat and send "hello"; a reply means the wrappe
 ## Embedding chats and buttons in notes
 Fenced blocks with language `agent-client` or `agent`, body in YAML (docs: https://rait-09.github.io/obsidian-agent-client/usage/embeddable-blocks.html).
 - Chat: `type: chat`, `agent`, `model`, `height`, `id` + `persist: true` to survive restarts, `noteContext: hosting` to pin the mention to the hosting note.
-- Button: `type: button`, `text`, `prompt`, `viewType: right-pane | floating | editor-tab | embedded`, `autoSend: true` to fire immediately.
+- Button: `type: button`, `text`, `prompt`, `viewType: right-pane | floating | editor-tab | embedded`. Use `autoSend: false` to prepare a prompt for review before a separate send action.
 
 ## Settings worth setting
 - Export: folder `Meta/Agent Chats` (pre-set), tag `agent-client`, auto-export off. Exported chats contain whatever notes were mentioned, so they show up in vault search like any note.

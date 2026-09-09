@@ -11,8 +11,9 @@ const pset = id => { try { return app.plugins.plugins[id]?.settings || null; } c
 const today = moment();
 
 // Tier 0: the app
-for (const [id, name] of [["dataview", "Dataview"], ["templater-obsidian", "Templater"], ["periodic-notes", "Periodic Notes"], ["quickadd", "QuickAdd"], ["obsidian-tasks-plugin", "Tasks"], ["obsidian-kanban", "Kanban"]])
+for (const [id, name] of [["life-os-app", "Life OS"], ["dataview", "Dataview"], ["templater-obsidian", "Templater"], ["periodic-notes", "Periodic Notes"], ["quickadd", "QuickAdd"], ["obsidian-tasks-plugin", "Tasks"], ["obsidian-kanban", "Kanban"]])
   add(0, `${name} plugin enabled`, enabled(id), "Settings → Community plugins");
+add(0, "Life OS application command registered", !!app.commands.findCommand("life-os-app:open-home"), "Command palette → Life OS: Open Life OS home");
 add(0, "Dataview JavaScript queries on", !!(pset("dataview")?.enableDataviewJs), "Settings → Dataview");
 add(0, "CSS snippet lifeos on", (() => { try { return app.customCss.enabledSnippets.has("lifeos"); } catch (e) { return false; } })(), "Settings → Appearance → CSS snippets");
 add(0, "Periodic Notes daily folder matches config", (() => { const pn = pset("periodic-notes"); return !!pn && pn.daily?.folder === (cfg.daily_folder || "01 Journal/Daily") && /Daily Note\.md$/.test(pn.daily?.template || ""); })(), "Settings → Periodic Notes");
@@ -48,10 +49,10 @@ if (app.vault.getAbstractFileByPath("09 Reading")) add(2, "Reading module decide
 // Tier 3: AI in the vault (optional)
 add(3, "Agent Client plugin enabled", enabled("agent-client"), "Settings → Community plugins", "optional");
 const ac = await readJson(".obsidian/plugins/agent-client/data.json");
-const cmd = ac?.presetAgents?.["claude-code-acp"]?.command || "";
+const configuredCommands = Object.values(ac?.presetAgents || {}).map(p => p?.command || "").filter(Boolean);
 const isLinux = navigator.userAgent.includes("Linux") && !navigator.userAgent.includes("Android");
-add(3, "Claude Code path set in Agent Client", cmd.length > 0 && (!isLinux || cmd.startsWith("/")), "Settings → Agent Client → Claude Code → Auto-detect", "optional; on Linux Flatpak paste the full path to the wrapper, see Guide 14");
-add(3, "Claude Code login done (self-declared)", cur.setup_claude_login === true, "tick setup_claude_login in this note's properties", "optional");
+add(3, "At least one local agent path set in Agent Client", configuredCommands.some(cmd => !isLinux || cmd.startsWith("/")), "Settings → Agent Client → choose an agent → Auto-detect", "optional; on Linux Flatpak use the full path to the wrapper, see Guide 14");
+add(3, "Agent login done (self-declared)", cur.setup_claude_login === true, "tick setup_claude_login in this note's properties", "optional; the property name is retained for upgrade compatibility");
 add(3, "Obsidian MCP server registered for your agent (self-declared)", cur.setup_mcp_registered === true, "[[19 Obsidian MCP Bridge]] then tick setup_mcp_registered", "optional");
 add(3, "Agent Client has had a conversation", (ac?.savedSessions || []).length > 0, "[[Assistant]]", "optional");
 

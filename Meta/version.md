@@ -1,10 +1,12 @@
 ---
-template_version: 1.0.2
-released: 2026-08-27
+template_version: 1.1.0
+built: 2026-09-09
+release_status: candidate
 min_obsidian: 1.13.1
 plugins:
   agent-client: "0.12.1"
   dataview: "0.5.68"
+  life-os-app: "0.20.0"
   obsidian-kanban: "2.0.51"
   obsidian-local-rest-api: "5.1.0"
   obsidian-tasks-plugin: "8.4.0"
@@ -16,4 +18,4 @@ plugins:
 ---
 # Version
 
-See `CHANGELOG.md` for what changed and what to merge by hand after an upgrade. System files (dashboards, views, guide, scripts, plugins) can be overwritten by an upgrade; your notes, `Meta/Compass Config.md`, and `Templates/` are never overwritten.
+This is a local candidate, not evidence of native acceptance or publication. There is no in-place updater. Back up the old vault and migrate content and custom configuration into a separate fresh copy with conflict review. See `scripts/RELEASE.md`.

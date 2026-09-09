@@ -1,74 +1,20 @@
 {
-  "quickadd:choice:lifeos-journal": [
+  "life-os-app:open-home": [
     {
       "modifiers": [
         "Mod",
         "Shift"
       ],
-      "key": "J"
+      "key": "L"
     }
   ],
-  "quickadd:choice:lifeos-win": [
+  "life-os-app:open-capture": [
     {
       "modifiers": [
         "Mod",
         "Shift"
       ],
-      "key": "W"
-    }
-  ],
-  "quickadd:choice:lifeos-gratitude": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "G"
-    }
-  ],
-  "quickadd:choice:lifeos-task": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "T"
-    }
-  ],
-  "templater-obsidian:Templates/Daily Questions Prompt.md": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "Q"
-    }
-  ],
-  "quickadd:choice:lifeos-daily": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "D"
-    }
-  ],
-  "quickadd:choice:lifeos-weekly": [
-    {
-      "modifiers": [
-        "Mod",
-        "Alt"
-      ],
-      "key": "W"
-    }
-  ],
-  "quickadd:choice:lifeos-quarterly": [
-    {
-      "modifiers": [
-        "Mod",
-        "Alt"
-      ],
-      "key": "Q"
+      "key": "C"
     }
   ]
 }

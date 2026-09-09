@@ -19,6 +19,7 @@ Seven workflows, one vault, dashboards on top:
 | + | Knowledge layer (claude-obsidian) | `wiki/`, `inbox/`, `wiki/routing-map.md` | [[15 claude-obsidian]] |
 | + | Research and publishing | Web viewer, SEO, Vault Lens | [[16 SEO, Web Viewer, and Vault Lens]], [[17 Search Providers]] |
 | + | Obsidian MCP bridge | Local REST API `/mcp`, `.mcp.example.json` | [[19 Obsidian MCP Bridge]] |
+| + | Life OS application | Native navigation, capture, live Today status, and governed AI entry points | [[21 Life OS Application]] |
 
 Read next: [[01 Principles]] (the ideas behind it), [[02 Plugins]] (what is installed and the first-open checklist), [[11 Build Order]] (why one layer at a time), [[12 Resources and Links]].
 

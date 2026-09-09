@@ -1,6 +1,6 @@
 # Third-party notices
 
-This vault redistributes unmodified release builds of the following Obsidian community plugins (each folder under `.obsidian/plugins/<id>/` contains the plugin's `main.js`, `manifest.json`, `styles.css`, and a copy of its LICENSE). They are the work of their authors, under their own licenses. For the GPL and AGPL plugins, the corresponding source is the upstream repository at the release tag listed; the binaries here are the unmodified release artefacts.
+This vault bundles the following Obsidian community plugins with their recorded versions and licenses. Each plugin folder includes its main script, manifest, and license; a stylesheet is included where supplied. The upstream links below are provenance references. File presence and matching version labels alone do not prove byte-for-byte identity with an upstream release. A public release requires a separate upstream provenance and redistribution review, including applicable source-distribution requirements.
 
 | Plugin id | Version shipped | License | Upstream | Release |
 | --- | --- | --- | --- | --- |
@@ -16,6 +16,16 @@ This vault redistributes unmodified release builds of the following Obsidian com
 | seo | 0.5.6 | MIT | https://github.com/davidvkimball/obsidian-seo | https://github.com/davidvkimball/obsidian-seo/releases/tag/0.5.6 |
 
 Plugin ids are the ones Obsidian uses; the display names appear in Settings → Community plugins.
+
+## First-party component
+
+The original Life OS application shell is included with this vault.
+
+| Plugin id | Version shipped | License | Source |
+| --- | --- | --- | --- |
+| life-os-app | 0.20.0 | MIT | `.obsidian/plugins/life-os-app/` |
+
+The Life OS Brain view is an original Canvas implementation inspired by the brain-shaped visual concept in SEO OS. No SEO OS source code, assets, dependencies, or client data are bundled.
 
 Obsidian itself is not included; members install it from https://obsidian.md.
 
