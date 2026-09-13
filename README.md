@@ -9,6 +9,12 @@ Compass is a complete Obsidian vault template of the system Mike Schmitz describ
 
 **Status: development candidate, not a newly accepted public release.** The existing 1.0.2 archives predate the Life OS application. The next template candidate is 1.1.0, subject to packaging and native acceptance. Requires Obsidian 1.13.1 or newer. Core dashboard mobile compatibility needs native testing; Agent Client and the local API bridge are desktop-only.
 
+## Watch the demo
+
+[![Watch the Compass (Life OS) demo by Daniel Agrici](https://i.ytimg.com/vi/0mUx4z6M5AU/hqdefault.jpg)](https://www.youtube.com/watch?v=0mUx4z6M5AU)
+
+**[Watch demo here](https://www.youtube.com/watch?v=0mUx4z6M5AU)**: a walkthrough of Compass by Daniel Agrici.
+
 ## Watch the idea
 
 [![How I Run My Whole Life Out of Obsidian](https://img.youtube.com/vi/-h7ZAuuNDLE/maxresdefault.jpg)](https://www.youtube.com/watch?v=-h7ZAuuNDLE)
