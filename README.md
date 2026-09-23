@@ -1,27 +1,7 @@
-<p align="center"><img src="Meta/attachments/cover.png" alt="Life OS" width="100%"></p>
-<!-- Fallback if the PNG is missing: <p align="center"><img src="Meta/attachments/cover.svg" alt="Life OS" width="100%"></p> -->
-
 # Life OS
 
 *在 Obsidian 里过一整个人生：每晚一组诚实的问题，其余的事跟着来。*
 
-Compass 是一套完整的 Obsidian 库模板，依照 Mike Schmitz 在 *How I Run My Whole Life Out of Obsidian* 里讲的系统做成：每日问答日记、季度个人静修、多尺度计划、习惯、每日阅读、任务、写作看板，再用 DataviewJS 仪表盘把它们连在一起。一等的 Life OS 应用放在这些工作流上面。助手读 `AGENTS.md`，并运行一套需要你点头才改笔记的提示词。所有数据仍是普通 Markdown 和属性。十个社区插件和 Life OS 插件连同各自的许可证放在这个文件夹里。
-
-界面说明是中文。属性键保持 `dq_*`、`habit_*`、`wheel_*`，图表用配置里的中文显示名。
-
-**状态：开发候选，不是新验收过的公开发布。** 已有的 1.0.2 归档早于 Life OS 应用。下一个模板候选是 1.1.0，还要经过打包和原生验收。需要 Obsidian 1.13.1 或更新。核心仪表盘在手机上是否可用，还要在原生环境里测。Agent Client 和本地接口只在桌面端。
-
-## 看演示
-
-[![Watch the Compass (Life OS) demo by Daniel Agrici](https://i.ytimg.com/vi/0mUx4z6M5AU/hqdefault.jpg)](https://www.youtube.com/watch?v=0mUx4z6M5AU)
-
-**[在这里看演示](https://www.youtube.com/watch?v=0mUx4z6M5AU)**：Daniel Agrici 带你走一遍 Compass。
-
-## 看这个想法从哪来
-
-[![How I Run My Whole Life Out of Obsidian](https://img.youtube.com/vi/-h7ZAuuNDLE/maxresdefault.jpg)](https://www.youtube.com/watch?v=-h7ZAuuNDLE)
-
-视频作者是 Mike Schmitz，Practical PKM（2026-06-26 发布）。Compass 是对视频所描述系统的独立实现。它与 Practical PKM、LifeHQ 库、Obsidian Starter Vault 没有从属、背书或派生关系，也不包含它们的文件或文字。见 `CREDITS.md`。
 
 ## 快速开始
 
