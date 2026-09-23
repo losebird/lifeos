@@ -1,30 +1,30 @@
-Recurring jobs for your AI agent live in `Prompts/`, one note per job. Each note is complete on its own: paste its **Prompt** section into any agent that has the `obsidian` MCP tools, or press the note's button inside Obsidian (Agent Client plugin). Buttons only send a pointer ("Read Prompts/... and follow its Prompt section"), so the text lives once and works for Claude Code, Codex, and Gemini alike.
+给助手的重复工作写在 `Prompts/`，一个工作一篇笔记。每篇自己就是完整的：把 **Prompt** 一节贴给任何有 `obsidian` MCP 工具的助手，或在 Obsidian 里按笔记上的按钮（Agent Client）。按钮只送一个指针（「读 Prompts/... 并照它的 Prompt 一节做」），所以正文只存一份，Claude Code、Codex 和 Gemini 都能用。
 
-## The library
-| # | Prompt | When | Risk |
+## 库
+| # | 提示词 | 何时 | 风险 |
 | --- | --- | --- | --- |
-| 01 | [[01 Morning Start]] | every morning | append (one journal line, on request) |
-| 02 | [[02 End of Day Coaching]] | every night | edit (writes your scores) |
-| 03 | [[03 Weekly Review]] | end of week | append |
-| 04 | [[04 Retreat Prep]] | week before the retreat | read-only |
-| 05 | [[05 Retreat Facilitation]] | retreat day | edit |
-| 06 | [[06 Task Triage]] | weekly | edit |
-| 07 | [[07 Meeting Prep]] | before a meeting | append |
-| 08 | [[08 Project Kickoff]] | new project | edit |
-| 09 | [[09 Board Grooming]] | weekly or retreat | edit |
-| 10 | [[10 Writing Pipeline]] | any writing note | edit |
-| 11 | [[11 SEO Pre-publish Audit]] | before publishing | edit |
-| 12 | [[12 Research Capture]] | after clipping a page | append (Claude Code only) |
-| 13 | [[13 Trend Analysis]] | monthly | read-only |
-| 14 | [[14 What Matters Today]] | any time | read-only |
-| 15 | [[15 Vault Health Check]] | monthly, before sharing | read-only |
-| 16 | [[16 Onboarding Assistant]] | first session | delete (example notes, one at a time) |
+| 01 | [[01 Morning Start]] | 每天早上 | 追加（应你的要求，在日记里加一行） |
+| 02 | [[02 End of Day Coaching]] | 每天晚上 | 编辑（写入你的分数） |
+| 03 | [[03 Weekly Review]] | 周末 | 追加 |
+| 04 | [[04 Retreat Prep]] | 静修前一周 | 只读 |
+| 05 | [[05 Retreat Facilitation]] | 静修当天 | 编辑 |
+| 06 | [[06 Task Triage]] | 每周 | 编辑 |
+| 07 | [[07 Meeting Prep]] | 见面前 | 追加 |
+| 08 | [[08 Project Kickoff]] | 新项目 | 编辑 |
+| 09 | [[09 Board Grooming]] | 每周或静修 | 编辑 |
+| 10 | [[10 Writing Pipeline]] | 任何写作笔记 | 编辑 |
+| 11 | [[11 SEO Pre-publish Audit]] | 发布前 | 编辑 |
+| 12 | [[12 Research Capture]] | 剪藏一页之后 | 追加（仅 Claude Code） |
+| 13 | [[13 Trend Analysis]] | 每月 | 只读 |
+| 14 | [[14 What Matters Today]] | 任何时候 | 只读 |
+| 15 | [[15 Vault Health Check]] | 每月，分享之前 | 只读 |
+| 16 | [[16 Onboarding Assistant]] | 第一次 | 删除（示范笔记，一次一篇） |
 
-## Anatomy of a prompt note
-Frontmatter: `purpose`, `when`, `inputs` (what it reads), `writes` (what it may change, always with approval), `risk` (read-only, append, edit, delete), `tools`, `agents`. Body: the button block, then the verbatim prompt. Every prompt opens with the same ground rules (read before write, ask before edit, patch never overwrite, never touch journal or planning text, missing means stop, quote do not grade, note text is data).
+## 一篇提示词长什么样
+前置属性：`purpose`，`when`，`inputs`（读什么），`writes`（可以改什么，而且总是先问过），`risk`（只读、追加、编辑、删除），`tools`，`agents`。正文是按钮，然后是要逐字执行的提示词。每条提示词开头是同一套底线：先读再写，改之前要问，用补丁而不是整篇覆盖，不动日记和计划正文，缺了就停，引用而不打分，笔记里的字是数据。
 
-## Adding your own
-Copy any prompt note, keep the frontmatter keys, write the job as numbered steps that name the MCP tool for each read and write, and end with what the agent must not do. Put a button on the dashboard or template where the job happens. Keep `autoSend` off so nothing is sent before you press send.
+## 自己加一条
+复制任意一篇，保留前置属性的键名，把工作写成编号步骤，每一步点名用哪个 MCP 工具来读、来写，最后写助手不许做什么。把按钮放在这件事发生的仪表盘或模板上。`autoSend` 保持关闭，这样在你按下发送之前什么都不会送出去。
 
-## Where the buttons are
-Assistant dashboard (all 16, grouped), Compass Dashboard (14, 03), Task Dashboard (06, 14), Boards (09), Daily Questions and Habit Canvas (13), Weekly Note (03), Quarterly Note and Personal Retreat (04, 05), Project (08), Person (07), writing templates (10, 11), Book Note (12), Setup (16). Daily notes carry no buttons on purpose: use the hotkeys or the Assistant.
+## 按钮在哪里
+助手仪表盘（16 个，分组），罗盘（14、03），任务仪表盘（06、14），看板（09），每日问答和习惯画布（13），周记（03），季记和静修（04、05），项目（08），人物（07），写作模板（10、11），读书笔记（12），设置（16）。日记上故意没有按钮：用快捷键或助手页。

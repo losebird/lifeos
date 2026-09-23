@@ -1,26 +1,26 @@
-Data entry is checkbox properties in the daily note (`habit_*`). No app, no notifications, no streak shame. This page only visualizes what is already there, and the habit sits next to the journal entry that explains why you missed it.
+习惯记在日记的勾选属性里（`habit_*`）。没有单独的应用，没有提醒，也不用为连续天数羞愧。这一页只画出已经记下的东西。没做到的原因，就在同一天的日记旁边。
 
-## Last 8 weeks
+## 近 8 周
 ```dataviewjs
 await dv.view("Meta/views/habits", { days: 56 });
 ```
 
-## Last 2 weeks
+## 近 2 周
 ```dataviewjs
 await dv.view("Meta/views/habits", { days: 14 });
 ```
 
-## Changing the habits you track
-1. Open [[Compass Config]].
-2. Add or remove entries in the `habits` list (keep the `habit_` prefix).
-3. Done. New daily notes carry the new checkbox, and this dashboard picks it up automatically.
+## 改你在追踪的习惯
+1. 打开 [[Compass Config|配置]]。
+2. 在 `habits` 列表里增减（保持 `habit_` 前缀）。显示名写在 `labels` 里。
+3. 完成。新日记会带上新的勾选，这一页会自动认出来。
 
-Track a small set per season (3 to 5). Tracking honestly beats tracking perfectly.
+一个季节追踪一小撮（3 到 5 个）。诚实比完美重要。
 
-## Ask
+## 问
 ```agent
 type: button
-text: "Trends in my questions and habits"
+text: "看看问题和习惯的趋势"
 prompt: "Read Prompts/13 Trend Analysis.md with vault_read and follow its Prompt section for the note I have open (or the current period if none applies)."
 viewType: right-pane
 ```

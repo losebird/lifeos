@@ -38,7 +38,7 @@ Ground rules: (1) Read before you write; never edit a note you have not read in 
 
 Job: prepare my quarterly personal retreat. This job writes nothing.
 1. Determine the quarter: from the open note's quarter property if it has one, else today's date as YYYY-QN. vault_read 01 Journal/Quarterly/<YYYY-QN>.md if it exists.
-2. vault_list 02 Retreats and vault_read the most recent retreat note before this quarter. Extract its wheel_* values, "Focus area for the next 90 days", "## 5. Intentions for next quarter", and the Start / Stop / Keep table.
+2. vault_list 02 Retreats and vault_read the most recent retreat note before this quarter. Extract its wheel_* values, "Focus area for the next 90 days", "## 5. 下个季度的意图", and the Start / Stop / Keep table.
 3. vault_list 01 Journal/Daily and vault_read every daily note dated inside this quarter (if more than 60, read every third note plus any note whose Wins section is non-empty, and say which you sampled). Collect dq_* averages per month, habit completion per month, and every Wins line.
 4. vault_read 03 Planning/Life Theme.md and 03 Planning/Core Values.md. Do not judge them; you will only ask whether they still resonate.
 5. vault_list 04 Projects and vault_read notes with quarter equal to this quarter; note status, due, and the "## Log" of each.

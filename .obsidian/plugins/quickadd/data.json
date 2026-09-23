@@ -2,11 +2,11 @@
   "choices": [
     {
       "id": "lifeos-journal",
-      "name": "📝 Journal entry",
+      "name": "📝 记一笔",
       "type": "Capture",
       "command": true,
       "captureTo": "01 Journal/Daily/{{DATE:YYYY-MM-DD}}.md",
-      "captureToActiveFile": false,
+      "captureToActiveFile": true,
       "createFileIfItDoesntExist": {
         "enabled": true,
         "createWithTemplate": true,
@@ -21,11 +21,15 @@
       "task": false,
       "insertAfter": {
         "enabled": true,
-        "after": "## Journal",
+        "after": "## 日记",
         "insertAtEnd": true,
         "considerSubsections": false,
         "createIfNotFound": true,
-        "createIfNotFoundLocation": "bottom"
+        "createIfNotFoundLocation": "bottom",
+        "inline": false,
+        "replaceExisting": false,
+        "promptHeading": false,
+        "blankLineAfterMatchMode": "auto"
       },
       "newLineCapture": {
         "enabled": false,
@@ -43,11 +47,19 @@
         "direction": "vertical",
         "focus": true,
         "mode": "default"
-      }
+      },
+      "insertBefore": {
+        "enabled": false,
+        "before": "",
+        "createIfNotFound": false,
+        "createIfNotFoundLocation": "top"
+      },
+      "activeFileWritePosition": "cursor",
+      "captureToCanvasNodeId": ""
     },
     {
       "id": "lifeos-win",
-      "name": "🏆 Log a win",
+      "name": "🏆 记一个胜利",
       "type": "Capture",
       "command": true,
       "captureTo": "01 Journal/Daily/{{DATE:YYYY-MM-DD}}.md",
@@ -66,7 +78,7 @@
       "task": false,
       "insertAfter": {
         "enabled": true,
-        "after": "## Wins",
+        "after": "## 胜利",
         "insertAtEnd": true,
         "considerSubsections": false,
         "createIfNotFound": true,
@@ -92,7 +104,7 @@
     },
     {
       "id": "lifeos-gratitude",
-      "name": "🙏 Gratitude",
+      "name": "🙏 感恩",
       "type": "Capture",
       "command": true,
       "captureTo": "01 Journal/Daily/{{DATE:YYYY-MM-DD}}.md",
@@ -111,7 +123,7 @@
       "task": false,
       "insertAfter": {
         "enabled": true,
-        "after": "## Gratitude",
+        "after": "## 感恩",
         "insertAtEnd": true,
         "considerSubsections": false,
         "createIfNotFound": true,
@@ -137,11 +149,11 @@
     },
     {
       "id": "lifeos-task",
-      "name": "✅ Add task (master list)",
+      "name": "✅ 添加任务（总表）",
       "type": "Capture",
       "command": true,
       "captureTo": "08 Tasks/Tasks.md",
-      "captureToActiveFile": false,
+      "captureToActiveFile": true,
       "createFileIfItDoesntExist": {
         "enabled": true,
         "createWithTemplate": false,
@@ -156,11 +168,15 @@
       "task": false,
       "insertAfter": {
         "enabled": true,
-        "after": "## Inbox",
+        "after": "## 收件箱",
         "insertAtEnd": true,
         "considerSubsections": false,
         "createIfNotFound": true,
-        "createIfNotFoundLocation": "bottom"
+        "createIfNotFoundLocation": "bottom",
+        "inline": false,
+        "replaceExisting": false,
+        "promptHeading": true,
+        "blankLineAfterMatchMode": "auto"
       },
       "newLineCapture": {
         "enabled": false,
@@ -178,7 +194,15 @@
         "direction": "vertical",
         "focus": true,
         "mode": "default"
-      }
+      },
+      "insertBefore": {
+        "enabled": false,
+        "before": "",
+        "createIfNotFound": false,
+        "createIfNotFoundLocation": "top"
+      },
+      "activeFileWritePosition": "cursor",
+      "captureToCanvasNodeId": ""
     },
     {
       "id": "lifeos-newsletter-idea",
@@ -721,9 +745,39 @@
       "setFileExistsBehavior": true
     }
   ],
+  "inputPrompt": "single-line",
+  "persistInputPromptDrafts": true,
+  "useSelectionAsCaptureValue": true,
+  "searchNestedChoices": true,
+  "templateFolderLauncherRow": "bottom",
+  "devMode": false,
   "templateFolderPaths": [
     "Templates"
   ],
+  "announceUpdates": "major",
+  "version": "2.23.0",
+  "globalVariables": {},
+  "onePageInputEnabled": false,
+  "disableOnlineFeatures": true,
+  "enableUriCallbacks": false,
+  "enableRibbonIcon": false,
+  "showCaptureNotification": true,
+  "showInputCancellationNotification": false,
+  "enableTemplatePropertyTypes": false,
+  "dateAliases": {
+    "t": "today",
+    "tm": "tomorrow",
+    "yd": "yesterday",
+    "nw": "next week",
+    "nm": "next month",
+    "ny": "next year",
+    "lw": "last week",
+    "lm": "last month",
+    "ly": "last year"
+  },
+  "ai": {
+    "providers": []
+  },
   "migrations": {
     "migrateToMacroIDFromEmbeddedMacro": true,
     "useQuickAddTemplateFolder": true,
@@ -739,12 +793,7 @@
     "setProviderModelDiscoveryMode": true,
     "migrateToMultipleTemplateFolders": true,
     "refreshStaleDefaultModelSeeds": true,
-    "pinAiModelRefs": true
-  },
-  "version": "2.23.0",
-  "disableOnlineFeatures": true,
-  "ai": {
-    "providers": []
-  },
-  "globalVariables": {}
+    "pinAiModelRefs": true,
+    "migrateProviderApiKeysToSecretStorage": true
+  }
 }

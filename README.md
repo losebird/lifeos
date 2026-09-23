@@ -1,86 +1,88 @@
-<p align="center"><img src="Meta/attachments/cover.png" alt="Compass" width="100%"></p>
-<!-- Fallback if the PNG is missing: <p align="center"><img src="Meta/attachments/cover.svg" alt="Compass" width="100%"></p> -->
+<p align="center"><img src="Meta/attachments/cover.png" alt="Life OS" width="100%"></p>
+<!-- Fallback if the PNG is missing: <p align="center"><img src="Meta/attachments/cover.svg" alt="Life OS" width="100%"></p> -->
 
 # Life OS
 
-*Run your whole life out of Obsidian: one honest question set a night, everything else follows.*
+*在 Obsidian 里过一整个人生：每晚一组诚实的问题，其余的事跟着来。*
 
-Compass is a complete Obsidian vault template of the system Mike Schmitz describes in "How I Run My Whole Life Out of Obsidian": journaling with daily questions, quarterly personal retreats, multi-scale planning, habit tracking, daily reading, task management, writing boards, and a DataviewJS dashboard that ties it together. The first-party Life OS application now sits above those workflows, with an AI assistant that reads `AGENTS.md` and runs a library of approval-aware prompts. Everything remains plain Markdown and properties. Ten community plugins and the first-party Life OS plugin ship inside the folder with their licenses.
+Compass 是一套完整的 Obsidian 库模板，依照 Mike Schmitz 在 *How I Run My Whole Life Out of Obsidian* 里讲的系统做成：每日问答日记、季度个人静修、多尺度计划、习惯、每日阅读、任务、写作看板，再用 DataviewJS 仪表盘把它们连在一起。一等的 Life OS 应用放在这些工作流上面。助手读 `AGENTS.md`，并运行一套需要你点头才改笔记的提示词。所有数据仍是普通 Markdown 和属性。十个社区插件和 Life OS 插件连同各自的许可证放在这个文件夹里。
 
-**Status: development candidate, not a newly accepted public release.** The existing 1.0.2 archives predate the Life OS application. The next template candidate is 1.1.0, subject to packaging and native acceptance. Requires Obsidian 1.13.1 or newer. Core dashboard mobile compatibility needs native testing; Agent Client and the local API bridge are desktop-only.
+界面说明是中文。属性键保持 `dq_*`、`habit_*`、`wheel_*`，图表用配置里的中文显示名。
 
-## Watch the demo
+**状态：开发候选，不是新验收过的公开发布。** 已有的 1.0.2 归档早于 Life OS 应用。下一个模板候选是 1.1.0，还要经过打包和原生验收。需要 Obsidian 1.13.1 或更新。核心仪表盘在手机上是否可用，还要在原生环境里测。Agent Client 和本地接口只在桌面端。
+
+## 看演示
 
 [![Watch the Compass (Life OS) demo by Daniel Agrici](https://i.ytimg.com/vi/0mUx4z6M5AU/hqdefault.jpg)](https://www.youtube.com/watch?v=0mUx4z6M5AU)
 
-**[Watch demo here](https://www.youtube.com/watch?v=0mUx4z6M5AU)**: a walkthrough of Compass by Daniel Agrici.
+**[在这里看演示](https://www.youtube.com/watch?v=0mUx4z6M5AU)**：Daniel Agrici 带你走一遍 Compass。
 
-## Watch the idea
+## 看这个想法从哪来
 
 [![How I Run My Whole Life Out of Obsidian](https://img.youtube.com/vi/-h7ZAuuNDLE/maxresdefault.jpg)](https://www.youtube.com/watch?v=-h7ZAuuNDLE)
 
-Video by Mike Schmitz, Practical PKM (published 2026-06-26). Compass is an independent implementation of what the video describes. It is not affiliated with, endorsed by, or derived from Practical PKM, the LifeHQ vault, or the Obsidian Starter Vault, and contains none of their files or text. See `CREDITS.md`.
+视频作者是 Mike Schmitz，Practical PKM（2026-06-26 发布）。Compass 是对视频所描述系统的独立实现。它与 Practical PKM、LifeHQ 库、Obsidian Starter Vault 没有从属、背书或派生关系，也不包含它们的文件或文字。见 `CREDITS.md`。
 
-## Quick start
+## 快速开始
 
-1. Download the zip from Releases, or clone this repository. The repository root is the vault.
-2. Open the folder in Obsidian (Open folder as vault).
-3. When Obsidian asks about Restricted mode, click **Turn off**. Then run the command **Reload app without saving** so the ten community plugins and Life OS light up. Life OS opens automatically after reload.
-4. Open `00 Dashboards/Setup.md`. It checks itself and tells you what is left.
-5. Tonight: Ctrl/Cmd+Shift+D opens today's note, Ctrl/Cmd+Shift+Q asks the questions. Answer 1 to 10, write one line under `## Journal`. Stop there. Everything else waits 30 days.
+1. 从 Releases 下载 zip，或克隆这个仓库。仓库根目录就是库。
+2. 在 Obsidian 里打开这个文件夹（Open folder as vault）。
+3. Obsidian 问到受限模式时，点 **Turn off**。然后运行命令 **Reload app without saving**，十个社区插件和 Life OS 才会亮起。重新加载后 Life OS 会自己打开。
+4. 打开 `00 Dashboards/Setup.md`。它会自己检查，并告诉你还剩什么。
+5. 今晚：`Ctrl/Cmd+Shift+D` 打开今天的笔记，`Ctrl/Cmd+Shift+Q` 开始提问。按 1 到 10 回答，在 `## 日记` 下写一行。就停在这里。其余的事等 30 天。
 
-Notes tagged `example` are seed data so the dashboards render on first open; the Setup checklist reminds you to delete them.
+带 `example` 标签的笔记是种子数据，好让仪表盘第一次打开就有图。设置清单会提醒你删掉它们。
 
-## What is inside
+## 里面有什么
 
 ```
-00 Dashboards/   Setup, Compass Dashboard, Habit Canvas, Daily Questions, Task, Projects, Boards, Assistant
-01 Journal/      Daily, Weekly, Quarterly periodic notes
-02 Retreats/     YYYY-QN Personal Retreat notes (wheel of life in their properties)
-03 Planning/     Life Theme, Core Values (+ roles), Ideal Week
-04 Projects/     project notes (#project/<slug> tasks) and the Projects Board
-05 People/       people notes (#p/<slug> tasks, #discuss roll-ups)
-06 Writing/      Newsletters, YouTube Scripts, Articles, Course Content, each with a Kanban board
-07 Library/      Book Notes (quotes with block ids for embedding)
-08 Tasks/        Tasks.md, the master list you capture to and never read
-09 Reading/      Reading Plan, Chapters, Verses, Study Notes, Topics (Bible is the worked example)
-Prompts/         16 prompts for your AI agent, one note per recurring job
-Templates/       Templater templates; property lists come from Meta/Compass Config.md
-Meta/            Compass Config.md (the single config), views/*.js (dashboard widgets), version.md
-Guide/           principles, plugins, one page per workflow, build order, agents, MCP, prompt library
-wiki/, inbox/    knowledge layer for the claude-obsidian plugin (optional; plain Markdown without it)
-scripts/         reading plan generator, Bible splitter, template build and verify
-  .github/         CI workflow (verify) and issue templates
+00 Dashboards/   设置、罗盘、习惯画布、每日问答、任务、项目、看板、助手
+01 Journal/      日、周、季笔记
+02 Retreats/     YYYY-QN Personal Retreat（生命之轮写在属性里）
+03 Planning/     生命主题、核心价值观（含角色）、理想一周
+04 Projects/     项目笔记（任务用 #project/<slug>）和项目看板
+05 People/       人物笔记（任务用 #p/<slug>，#discuss 汇总待讨论）
+06 Writing/      通讯、视频脚本、文章、课程，各有一块看板
+07 Library/      读书笔记（引用带块标识，可以嵌进稿子）
+08 Tasks/        Tasks.md，只负责收集、不用手翻的总表
+09 Reading/      阅读计划、章、节、研读笔记、主题（圣经是现成例子）
+Prompts/         16 条给助手的提示词，一件重复的事一篇笔记
+Templates/       Templater 模板；属性列表来自 Meta/Compass Config.md
+Meta/            Compass Config.md（唯一配置）、views/*.js（仪表盘小部件）、version.md
+Guide/           原则、插件、每条工作流一页、分层顺序、助手、MCP、提示词库
+wiki/, inbox/    claude-obsidian 的知识层（可选；没有这个插件时就是普通 Markdown）
+scripts/         阅读计划生成器、圣经拆分、模板构建和检查
+  .github/         CI（verify）和 issue 模板
 CHANGELOG.md, CONTRIBUTING.md, SECURITY.md, CODE_OF_CONDUCT.md, CREDITS.md, LICENSE, LICENSE-GUIDE.md, THIRD_PARTY_NOTICES.md
-.claude-obsidian.json  marker for the claude-obsidian knowledge layer
-AGENTS.md        rules and folder map for any AI agent; CLAUDE.md and GEMINI.md point to it
-.claude/         settings.json: read-only MCP tool allowlist for Claude Code (no secrets)
-.mcp.example.json  how to point an agent at Obsidian's MCP server (Local REST API)
+.claude-obsidian.json  claude-obsidian 知识层的标记
+AGENTS.md        给任何助手的规则和文件夹地图；CLAUDE.md 和 GEMINI.md 指向它
+.claude/         settings.json：Claude Code 的只读 MCP 允许名单（没有密钥）
+.mcp.example.json  怎样把助手指到 Obsidian 的 MCP 服务（Local REST API）
 ```
 
-`Meta/Compass Config.md` is the single config: questions, habits, wheel areas, folders, prefixes, birthdate. Dashboards discover `dq_*`, `habit_*`, and `wheel_*` properties by prefix, so changing the lists there changes the whole vault.
+`Meta/Compass Config.md` 是唯一配置：问题、习惯、生命之轮领域、文件夹、前缀、出生日期。仪表盘按前缀发现 `dq_*`、`habit_*`、`wheel_*`，所以改这里的列表，整个库会跟着变。
 
-## The seven workflows
+## 七条工作流
 
-| # | Workflow | Where it lives | Guide |
+| # | 工作流 | 住在哪里 | 说明 |
 | --- | --- | --- | --- |
-| 1 | Journaling with Daily Questions | `01 Journal/Daily`, `Templates/Daily Note.md`, `Templates/Daily Questions Prompt.md`, questions in `Meta/Compass Config.md` | `Guide/03 Workflow - Journaling and Daily Questions.md` |
-| 2 | Quarterly personal retreat | `02 Retreats`, `Templates/Personal Retreat.md` | `Guide/04 Workflow - Personal Retreat.md` |
-| 3 | Multi-scale planning | `01 Journal/{Daily,Weekly,Quarterly}`, `03 Planning` | `Guide/05 Workflow - Multi-Scale Planning.md` |
-| 4 | Habit tracking | `habit_*` properties in the daily note, `00 Dashboards/Habit Canvas.md` | `Guide/06 Workflow - Habit Tracking.md` |
-| 5 | Daily reading (Bible as the worked example) | `09 Reading` | `Guide/07 Workflow - Daily Reading.md` |
-| 6 | Task management | `08 Tasks/Tasks.md`, `04 Projects`, `05 People`, `00 Dashboards/Task Dashboard.md` | `Guide/08 Workflow - Task Management.md` |
-| 7 | Writing | `06 Writing/*` with Kanban boards | `Guide/09 Workflow - Writing.md` |
+| 1 | 每日问答日记 | `01 Journal/Daily`，`Templates/Daily Note.md`，`Templates/Daily Questions Prompt.md`，问题在 `Meta/Compass Config.md` | `Guide/03 Workflow - Journaling and Daily Questions.md` |
+| 2 | 季度个人静修 | `02 Retreats`，`Templates/Personal Retreat.md` | `Guide/04 Workflow - Personal Retreat.md` |
+| 3 | 多尺度计划 | `01 Journal/{Daily,Weekly,Quarterly}`，`03 Planning` | `Guide/05 Workflow - Multi-Scale Planning.md` |
+| 4 | 习惯 | 日记里的 `habit_*` 属性，`00 Dashboards/Habit Canvas.md` | `Guide/06 Workflow - Habit Tracking.md` |
+| 5 | 每日阅读（圣经是现成例子） | `09 Reading` | `Guide/07 Workflow - Daily Reading.md` |
+| 6 | 任务 | `08 Tasks/Tasks.md`，`04 Projects`，`05 People`，`00 Dashboards/Task Dashboard.md` | `Guide/08 Workflow - Task Management.md` |
+| 7 | 写作 | `06 Writing/*` 和看板 | `Guide/09 Workflow - Writing.md` |
 
-Layered on top: the Compass dashboard (`Guide/10`), Kanban boards (`Guide/13`), AI in the vault (`Guide/14`, `Guide/20`), the claude-obsidian knowledge layer (`Guide/15`), research and publishing with Web viewer, SEO, and Vault Lens (`Guide/16`, `Guide/17`), and the Obsidian MCP bridge (`Guide/19`). Start with `Guide/00 Start Here.md`.
+叠在上面的还有：罗盘仪表盘（`Guide/10`）、看板（`Guide/13`）、库里的助手（`Guide/14`、`Guide/20`）、claude-obsidian 知识层（`Guide/15`）、网页查看器、SEO 和 Vault Lens（`Guide/16`、`Guide/17`），以及 Obsidian MCP 桥（`Guide/19`）。从 `Guide/00 Start Here.md` 开始。
 
-The layering rule: pick one workflow, probably the daily journaling, get it working for 30 days, then layer the next one. `Setup.md` enforces that order.
+分层规则：先选一条，多半是每日日记，用满 30 天，再加下一条。`Setup.md` 按这个顺序检查。
 
-## Plugins included
+## 带上的插件
 
-All ten community plugins are bundled under `.obsidian/plugins/`, each with a recorded version and license, and are listed as enabled. Byte-for-byte upstream provenance is a separate release check. The first-party `life-os-app` plugin is installed alongside them. Details and the first-open checklist are in `Guide/02 Plugins.md`.
+十个社区插件都在 `.obsidian/plugins/` 里，各自有记录的版本和许可证，并列为启用。是否与上游逐字节一致，是另一次发布检查。一等的 `life-os-app` 和它们放在一起。第一次打开要核对的步骤在 `Guide/02 Plugins.md`。
 
-| Plugin | Id | Version | License |
+| 插件 | Id | 版本 | 许可证 |
 | --- | --- | --- | --- |
 | Dataview | `dataview` | 0.5.68 | MIT |
 | Templater | `templater-obsidian` | 2.25.0 | AGPL-3.0 |
@@ -93,23 +95,23 @@ All ten community plugins are bundled under `.obsidian/plugins/`, each with a re
 | Agent Client | `agent-client` | 0.12.1 | Apache-2.0 |
 | SEO | `seo` | 0.5.6 | MIT |
 
-The first-party Life OS application (`life-os-app`) is separately versioned and licensed under MIT. It is the native navigation, capture, and live-dashboard layer. See `Guide/21 Life OS Application.md`.
+一等的 Life OS 应用（`life-os-app`）单独标版本，许可证是 MIT。它负责导航、捕捉和实时仪表盘。见 `Guide/21 Life OS Application.md`。
 
-Upstream repositories and release tags are in `THIRD_PARTY_NOTICES.md`. Obsidian itself is not included.
+上游仓库和发布标签在 `THIRD_PARTY_NOTICES.md`。Obsidian 本身不包含在内。
 
-## AI agents in the vault
+## 库里的助手
 
-- `AGENTS.md` is the canonical instruction file for any agent: folder map, property conventions, safety rules (read before write, ask before edit, never rewrite journal or planning text). `CLAUDE.md` and `GEMINI.md` point to it.
-- `Prompts/` holds 16 recurring jobs, one note per job (morning start, end of day coaching, weekly review, retreat prep and facilitation, task triage, meeting prep, project kickoff, board grooming, writing pipeline, SEO audit, research capture, trend analysis, what matters today, vault health check, onboarding). Each note carries its own `risk` level and a button; see `Guide/20 Prompt Library.md`.
-- Agent Client (`agent-client`) runs a local agent (Claude Code, Codex, Gemini CLI, and others) over the Agent Client Protocol and puts the chat in the sidebar or inside a note. Every edit is shown as a diff and needs approval; auto-allow ships off. See `Guide/14 Agent Client and Claude Code.md`.
-- The Obsidian MCP bridge: Local REST API 5.x serves an MCP server at `http://127.0.0.1:27123/mcp` (16 tools: open notes, run commands, search, read, patch). `.mcp.example.json` shows the client config; `.claude/settings.json` pre-approves the read-only tools for Claude Code. See `Guide/19 Obsidian MCP Bridge.md`.
-- No keys ship. Local REST API generates a per-install key on first load; each member registers the server in their own agent (for Claude Code, `claude mcp add --scope user ...`) with that key kept outside the vault. `.mcp.json`, agent sessions, and exported chats are excluded by `.gitignore` and by the build.
+- `AGENTS.md` 是给任何助手的正式说明：文件夹、属性约定、安全规则（先读再写，改之前要问，不重写日记和计划正文）。`CLAUDE.md` 和 `GEMINI.md` 指向它。
+- `Prompts/` 有 16 件重复的工作，一件一篇（晨间启动、晚间教练、周回顾、静修准备和引导、任务分拣、会前准备、项目启动、看板整理、写作、发布前 SEO、研究归档、趋势、今天最重要的事、库健康检查、新手引导）。每篇有自己的 `risk` 和一个按钮。见 `Guide/20 Prompt Library.md`。
+- Agent Client（`agent-client`）通过 Agent Client Protocol 在本机跑助手，把聊天放在侧栏或笔记里。每次修改都以差异出现，并需要批准。自动批准默认关闭。见 `Guide/14 Agent Client and Claude Code.md`。这套库另加了一条 Grok 自定义助手，命令是 `grok`，参数是 `agent` 和 `stdio`。本机要先装好 Grok 命令行。
+- Obsidian MCP 桥：Local REST API 5.x 在 `http://127.0.0.1:27123/mcp` 提供 MCP（16 个工具：打开笔记、运行命令、搜索、读取、补丁）。`.mcp.example.json` 是客户端配置示例。`.claude/settings.json` 为 Claude Code 预先允许只读工具。见 `Guide/19 Obsidian MCP Bridge.md`。
+- 仓库里不放密钥。Local REST API 在第一次加载时为本机生成密钥。每个人在自己的助手里登记这个服务（Claude Code 用 `claude mcp add --scope user ...`），密钥留在库外面。`.mcp.json`、助手会话和导出的聊天被 `.gitignore` 和构建脚本排除。
 
-## Build and release
+## 构建和发布
 
-![verify](https://github.com/AgriciDaniel/compass/actions/workflows/verify.yml/badge.svg)
+![verify](https://github.com/losebird/lifeos/actions/workflows/verify.yml/badge.svg)
 
-The template is built from the maintainer's live vault, never edited in the built copy:
+模板从维护者正在使用的库构建，不要去改构建出来的那一份：
 
 ```bash
 python3 scripts/verify_release_safety.py
@@ -117,14 +119,14 @@ python3 scripts/build_template.py --out ../life-os-releases --name LifeOS-1.1.0-
 python3 scripts/verify_template.py ../life-os-releases/LifeOS-1.1.0-candidate
 ```
 
-`build_template.py` copies with drop rules, keeps only `example`-tagged notes in user folders, resets defaults, strips machine state from plugin settings, adds the version and a one-page workspace, then verifies and zips. `verify_template.py` exits 1 on any failure: forbidden strings (names, paths, keys, certificates, em dashes), plugin settings (Local REST API exactly `{"enableInsecureServer": true}`, Agent Client with no sessions and auto-allow off, Omnisearch HTTP server off, QuickAdd online features off), plugin folders with LICENSE, notices matching manifests, referenced paths and wikilinks resolving, `Meta/views/*.js` syntax under Node, and total size under 20 MB. The `verify` workflow runs it on every push and pull request. Maintainer checklist: `scripts/RELEASE.md`. Changes: `CHANGELOG.md`.
+`build_template.py` 按丢弃规则复制，用户文件夹里只留带 `example` 标签的笔记，重置默认值，从插件设置里去掉这台机器的状态，写上版本和一页工作区，然后检查并打包。`verify_template.py` 有任何失败就以退出码 1 结束：禁止的字符串（姓名、路径、密钥、证书、长破折号）、插件设置（Local REST API 必须正好是 `{"enableInsecureServer": true}`，Agent Client 没有会话且自动批准关闭，Omnisearch 的 HTTP 服务关闭，QuickAdd 的在线功能关闭）、插件文件夹里有 LICENSE、声明与清单一致、引用的路径和维基链接能解析、`Meta/views/*.js` 能通过 Node 语法检查、总体积小于 20 MB。`verify` 工作流在每次推送和拉取请求时运行。维护者清单：`scripts/RELEASE.md`。变更记录：`CHANGELOG.md`。
 
-There is no transactional in-place upgrader. Back up the complete vault, extract a new release beside it, and migrate personal content, custom configuration, and templates with conflict review. Do not replace the working `.obsidian` folder wholesale. A backup is not proven until a restore has been tested. See `scripts/RELEASE.md` and `Guide/23 Native Acceptance.md`.
+没有原地升级器。先完整备份库，把新版本解压到旁边，再对照着搬个人内容、自定义配置和模板。不要整个替换正在使用的 `.obsidian` 文件夹。备份要恢复成功一次，才算数。见 `scripts/RELEASE.md` 和 `Guide/23 Native Acceptance.md`。
 
-## Credits and license
+## 出处和许可证
 
-Workflows follow Mike Schmitz's public video (Practical PKM). Daily questions: Marshall Goldsmith and Mark Reiter, *Triggers* (2015). Multi-scale planning: Cal Newport. Full credits in `CREDITS.md`.
+工作流跟随 Mike Schmitz 的公开视频（Practical PKM）。每日问答：Marshall Goldsmith 与 Mark Reiter，*Triggers*（2015）。多尺度计划：Cal Newport。完整出处在 `CREDITS.md`。
 
-Code, templates, dashboards, scripts, and configuration are MIT (`LICENSE`). The prose in `Guide/` is CC BY 4.0 (`LICENSE-GUIDE.md`). Third-party plugin binaries under `.obsidian/plugins/` keep their own licenses; see `THIRD_PARTY_NOTICES.md`. Community rules: `CODE_OF_CONDUCT.md`.
+代码、模板、仪表盘、脚本和配置是 MIT（`LICENSE`）。`Guide/` 里的说明是 CC BY 4.0（`LICENSE-GUIDE.md`）。`.obsidian/plugins/` 里的第三方插件二进制保持各自的许可证。见 `THIRD_PARTY_NOTICES.md`。社区规则：`CODE_OF_CONDUCT.md`。
 
-Contributing: `CONTRIBUTING.md`. Security: `SECURITY.md`.
+贡献：`CONTRIBUTING.md`。安全：`SECURITY.md`。

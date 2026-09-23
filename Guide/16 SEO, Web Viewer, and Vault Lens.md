@@ -1,18 +1,18 @@
-These three turn the vault into a place to research and publish from, on top of the life workflows.
+这三样让这个库在生活工作流之上，还能用来研究和发布。
 
-## Web viewer (core plugin, Obsidian 1.8+)
-Enabled in `core-plugins.json`; `.obsidian/webviewer.json` ships with external links opening in the viewer, ad blocking on, and saved pages going to `07 Library` (keys observed in public vaults, not officially documented; toggle once in settings to confirm on your build). Open links inside Obsidian, keep a browser tab next to a draft, and save a page as a note ("Save to vault") which pairs with the official Web Clipper. Settings → Core plugins → Web viewer: choose whether external links open in the viewer, set the search engine, and clear browsing data.
+## 网页查看器（核心插件，Obsidian 1.8 及以上）
+已在 `core-plugins.json` 里启用。`.obsidian/webviewer.json` 让外部链接在查看器里打开，广告拦截开着，保存的页面进 `07 Library`（这些键是从公开库里观察到的，不是官方文档；在你的版本里到设置里拨一次开关确认）。在 Obsidian 里打开链接，让浏览器页和草稿并排，把一页存成笔记（「Save to vault」），可以和官方 Web Clipper 配合。设置 → 核心插件 → 网页查看器：选择外部链接是否在查看器里打开、搜索引擎，以及清除浏览数据。
 
-## SEO (`seo` 0.5.6, https://github.com/davidvkimball/obsidian-seo)
-Audits notes meant to be published: title and description length, keyword in title/description/slug, heading hierarchy, alt text, broken and naked links, duplicate titles, reading level, word count. Score 40 to 100.
-- Commands: **Run current note audit**, **Run vault audit**.
-- Settings → SEO → scan directories: set `06 Writing` (and `07 Library` if you publish book notes). Leave the journal folders out; they are not for search engines.
-- External link checking is off by default and needs the network; leave it off in the template.
-- Frontmatter it reads: `title`, `description`, `slug`, `keywords` (configurable in settings). The writing templates carry `subject`, `meta_description`, `slug` today; align them with the plugin's property names in Settings → SEO if you want scores on drafts.
-- Part of the author's Vault CMS project; independent of any publishing platform.
+## SEO（`seo` 0.5.6，https://github.com/davidvkimball/obsidian-seo）
+检查准备发布的笔记：标题和描述的长度、关键词是否出现在标题、描述和 slug 里、标题层级、图片替代文本、断链和裸链接、重复标题、阅读难度、字数。分数从 40 到 100。
+- 命令：**Run current note audit**（检查当前笔记）、**Run vault audit**（检查整个库）。命令面板里的英文名字不要改，程序认的是它们。
+- 设置 → SEO → 扫描目录：设成 `06 Writing`（如果也发布读书笔记，再加上 `07 Library`）。日记文件夹不要放进去，它们不是给搜索引擎的。
+- 外部链接检查默认关闭，而且需要联网。模板里保持关闭。
+- 它读取的前置属性：`title`、`description`、`slug`、`keywords`（可在设置里改）。写作模板现在带的是 `subject`、`meta_description`、`slug`。想让草稿有分数，就在设置 → SEO 里把属性名对齐。
+- 属于作者的 Vault CMS 项目，不绑定任何发布平台。
 
-## Vault Lens (browser extension, formerly "Obsidian Search for Web")
-https://github.com/jk-oster/obsidian-search-for-web. Shows matching vault notes next to web search results and on pages you revisit. Needs a vault-side provider: see [[17 Search Providers]] for the security review and the member setup steps.
+## Vault Lens（浏览器扩展，旧名「Obsidian Search for Web」）
+https://github.com/jk-oster/obsidian-search-for-web。在网页搜索结果旁边，以及你再次打开的页面上，显示库里匹配的笔记。需要库这一侧有一个提供方。安全审查和安装步骤见 [[17 Search Providers]]。
 
-## Together
-Web viewer to read, Web Clipper + Vault Lens to capture and resurface, Claude via [[14 Agent Client and Claude Code]] to draft in `06 Writing`, SEO to audit before it leaves the vault.
+## 合在一起
+用网页查看器读，用 Web Clipper 和 Vault Lens 捕捉并再次浮现，用 [[14 Agent Client and Claude Code]] 在 `06 Writing` 里起草，发布离开库之前用 SEO 检查。

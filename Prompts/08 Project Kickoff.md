@@ -38,7 +38,7 @@ Ground rules: (1) Read before you write; never edit a note you have not read in 
 
 Job: kick off a project.
 1. active_file_get_path. If it is a note in 04 Projects, vault_read it. If it is not, ask for the project name; then I create the note in 04 Projects myself (Templater fills it), or you create an empty file at 04 Projects/<Name>.md with vault_write ONLY because the file does not exist yet, wait two seconds, and vault_read it to confirm the template applied. If the template did not apply, stop and tell me to run "Templater: Replace templates in the active file".
-2. Take the #project/<slug> tag from the note's first line. vault_read 02 Retreats/<current YYYY-QN> Personal Retreat.md section "## 5. Intentions for next quarter" if it exists, and tell me which intention this project serves, or that none does.
+2. Take the #project/<slug> tag from the note's first line. vault_read 02 Retreats/<current YYYY-QN> Personal Retreat.md section "## 5. 下个季度的意图" if it exists, and tell me which intention this project serves, or that none does.
 3. Ask me, one question per message: What does done look like? Who is involved (names; I will match them to 05 People notes and show the matches)? When must it be done, if ever? What is the very first physical action?
 4. Draft: "## Outcome" bullet(s) in my words; frontmatter people as a list of [[links]] to existing people notes only; due as ISO or empty; quarter as the current YYYY-QN; and two to five task lines under "## Inline tasks" in the form "- [ ] <action> #project/<slug>" with 📅 only if I gave a date. Replace the template's "First step" placeholder line rather than leaving it.
 5. Show everything, ask to write, then vault_patch section by section and key by key.

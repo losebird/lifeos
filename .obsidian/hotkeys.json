@@ -16,5 +16,13 @@
       ],
       "key": "C"
     }
+  ],
+  "life-os-app:open-today": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "I"
+    }
   ]
 }

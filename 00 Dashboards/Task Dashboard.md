@@ -1,21 +1,21 @@
-This page is a **recommendation engine**, not the place the day gets executed. Read it, pick what you will actually do, time block it (paper notebook or calendar). "The computer is the brain, the notebook is the list."
+这一页是**推荐清单**，不是执行今天的地方。看一遍，选出真正要做的事，再把它排进日历或纸上。
 
 ```agent
 type: button
-text: "Triage my inbox"
+text: "整理收件箱"
 prompt: "Read Prompts/06 Task Triage.md with vault_read and follow its Prompt section for the note I have open (or the current period if none applies)."
 viewType: right-pane
 ```
 ```agent
 type: button
-text: "What matters today"
+text: "今天最重要的事"
 prompt: "Read Prompts/14 What Matters Today.md with vault_read and follow its Prompt section for the note I have open (or the current period if none applies)."
 viewType: right-pane
 ```
 
-Capture everything to [[Tasks]] (the master list you never read) with the QuickAdd command **Add task**. Tag `#project/<slug>` or `#p/<person>` to route a task to its context. The queries below surface the right tasks at the right time.
+用 QuickAdd 的**添加任务**把事情收进 [[Tasks|总表]]。用 `#project/<slug>` 或 `#p/<人物>` 把任务送回它的上下文。中文标题会留在标签里。下面的查询按时间把该看的任务捞出来。
 
-## Overdue
+## 逾期
 ```tasks
 not done
 path does not include wiki/
@@ -24,7 +24,7 @@ sort by due
 group by filename
 ```
 
-## Today
+## 今天
 ```tasks
 not done
 path does not include wiki/
@@ -34,7 +34,7 @@ sort by priority
 group by filename
 ```
 
-## Next 7 days
+## 未来 7 天
 ```tasks
 not done
 path does not include wiki/
@@ -44,7 +44,7 @@ sort by due
 group by due
 ```
 
-## To discuss (by person)
+## 待讨论（按人）
 ```tasks
 not done
 path does not include wiki/
@@ -53,7 +53,7 @@ group by tags
 sort by created
 ```
 
-## High priority without a date
+## 高优先级但没有日期
 ```tasks
 not done
 path does not include wiki/
@@ -62,7 +62,7 @@ no due date
 group by filename
 ```
 
-## Inbox (untagged, undated, needs a home)
+## 收件箱（无标签、无日期，需要归位）
 ```tasks
 not done
 path does not include wiki/
@@ -73,7 +73,7 @@ tags do not include #p/
 limit 25
 ```
 
-## Done this week
+## 本周完成
 ```tasks
 done after 7 days ago
 path does not include wiki/

@@ -17,14 +17,14 @@ wheel_meaning: 7
 
 Previous retreat: [[2026-Q2 Personal Retreat]] · Quarter note: [[2026-Q3]] · Same quarter last year: [[2025-Q3 Personal Retreat]]
 
-## 1. Review life theme and core values
+## 1. 回顾生命主题和核心价值观
 ![[Life Theme#Theme]]
 ![[Core Values#Values]]
 
 Notes:
 - Still resonates. No change.
 
-## 2. Review the journal
+## 2. 回顾日记
 ```dataviewjs
 const q = moment(dv.current().quarter, "YYYY-[Q]Q");
 await dv.view("Meta/views/dailyquestions", { from: q.clone().startOf("quarter").format("YYYY-MM-DD"), to: q.clone().endOf("quarter").format("YYYY-MM-DD") });
@@ -35,7 +35,7 @@ await dv.view("Meta/views/habits", { days: 28 });
 What stood out:
 - Relationships score consistently the lowest of the daily questions.
 
-## 3. Wheel of life
+## 3. 生命之轮
 ```dataviewjs
 await dv.view("Meta/views/wheel", { page: dv.current().file.path });
 ```
@@ -45,7 +45,7 @@ Focus area for the next 90 days:
 Why this one:
 - Lowest on the wheel and lowest daily question. Everything else is holding.
 
-## 4. Retrospective
+## 4. 回顾
 ### Part 1: Look back at last quarter
 What went well:
 - Journaling stuck for 60+ days.
@@ -61,19 +61,19 @@ What I learned:
 | --- | --- | --- |
 | One friend call per week | Separate habit app | Daily questions at 21:00 |
 
-## 5. Intentions for next quarter
+## 5. 下个季度的意图
 1. Call or see one friend every week.
 2. Habits tracked in the daily note, reviewed every Friday.
 3. Ship one piece of writing every week from the vault.
 
-## 6. Review the ideal week
+## 6. 回顾理想一周
 ![[Ideal Week#Grid]]
 
 Changes to make:
 - Add "friend call" to Thursday 20:00.
 
-## 7. Projects to commit to
+## 7. 要承诺的项目
 - [[Example Project - Compass Vault]]
 
-## Closing
+## 收尾
 - A quarter of showing up for people, tracked honestly.

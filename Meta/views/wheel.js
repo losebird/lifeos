@@ -11,25 +11,25 @@ let how = "";
 if (!page) {
   const q = moment().quarter(), yr = moment().year();
   page = dv.page(`${FOLDER}/${yr}-Q${q} Personal Retreat`);
-  how = page ? `this quarter (${yr}-Q${q})` : "";
+  how = page ? `本季（${yr}-Q${q}）` : "";
 }
 if (!page) {
   const all = dv.pages(`"${FOLDER}"`).where(p => /^\d{4}-Q[1-4] Personal Retreat$/.test(p.file.name)).sort(p => p.file.name, "desc").array();
   page = all[0];
-  how = page ? "most recent retreat" : "";
+  how = page ? "最近一次静修" : "";
 }
 
 const root = dv.container.createEl("div", { cls: "lifeos-widget" });
 if (!page) {
-  root.createEl("p", { text: `No personal retreat note found in ${FOLDER}. Create one named "YYYY-QN Personal Retreat" (for example ${moment().year()}-Q${moment().quarter()} Personal Retreat) and fill in the ${PREFIX}* properties.` });
+  root.createEl("p", { text: `${FOLDER} 里还没有个人静修笔记。创建一篇名为「YYYY-QN Personal Retreat」的笔记（例如 ${moment().year()}-Q${moment().quarter()} Personal Retreat），并填上 ${PREFIX}* 属性。` });
 } else {
   const fm = page.file.frontmatter || {};
   const axes = Object.keys(fm)
     .filter(k => k.startsWith(PREFIX) && fm[k] !== null && fm[k] !== "" && !isNaN(Number(fm[k])))
-    .map(k => ({ key: k, name: k.slice(PREFIX.length).replace(/[_-]+/g, " ").replace(/\b\w/g, c => c.toUpperCase()), v: Math.max(0, Math.min(10, Number(fm[k]))) }));
-  if (how) root.createEl("p", { text: `Source: ${page.file.name} (${how})` }).style.opacity = "0.7";
+    .map(k => ({ key: k, name: (cfg.labels || {})[k] || k.slice(PREFIX.length).replace(/[_-]+/g, " ").replace(/\b\w/g, c => c.toUpperCase()), v: Math.max(0, Math.min(10, Number(fm[k]))) }));
+  if (how) root.createEl("p", { text: `来源：${page.file.name}（${how}）` }).style.opacity = "0.7";
   if (axes.length < 3) {
-    root.createEl("p", { text: `Retreat note ${page.file.name} has fewer than 3 filled ${PREFIX}* properties.` });
+    root.createEl("p", { text: `静修笔记 ${page.file.name} 里填了的 ${PREFIX}* 属性少于 3 个。` });
   } else {
     const n = axes.length, cx = 170, cy = 160, R = 105, W = 340, H = 320;
     const ang = i => -Math.PI / 2 + i * 2 * Math.PI / n;
@@ -53,6 +53,6 @@ if (!page) {
     root.createEl("div", { cls: "lifeos-chart" }).innerHTML = svg;
     const avg = axes.reduce((s, a) => s + a.v, 0) / n;
     const low = [...axes].sort((a, b) => a.v - b.v)[0];
-    root.createEl("p", { text: `Average ${avg.toFixed(1)} / 10. Lowest area: ${low.name} (${low.v}). That is the candidate for the next 90 days.` });
+    root.createEl("p", { text: `平均 ${avg.toFixed(1)} / 10。最低的领域：${low.name}（${low.v}）。这是接下来 90 天的候选焦点。` });
   }
 }

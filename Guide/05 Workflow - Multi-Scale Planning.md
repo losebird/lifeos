@@ -1,34 +1,34 @@
-# Workflow 3: Multi-Scale Planning
+# 工作流 3：多尺度计划
 
-Video: 7:53 to 9:45. Cal Newport's term: align daily, weekly, and quarterly plans so daily action serves what the retreat decided.
+视频 7:53 到 9:45。Cal Newport 的说法：让日、周、季对齐，使每天的行动服务于静修里定下的事。
 
-## Layers
-| Layer | Note | Template | Reviewed |
+## 层次
+| 层次 | 笔记 | 模板 | 何时看 |
 | --- | --- | --- | --- |
-| Roles and values | `03 Planning/Life Theme.md`, `03 Planning/Core Values.md` (roles table inside) | manual | every 90 days at the retreat |
-| Quarter | `01 Journal/Quarterly/YYYY-QN.md` | `Templates/Quarterly Note.md` | at the retreat, glanced weekly |
-| Week | `01 Journal/Weekly/gggg-Www.md` | `Templates/Weekly Note.md` | Sunday or Monday, and Friday review |
-| Day | `01 Journal/Daily/YYYY-MM-DD.md` | `Templates/Daily Note.md` | morning and 21:00 |
+| 角色和价值观 | `03 Planning/Life Theme.md`，`03 Planning/Core Values.md`（角色表在里面） | 手写 | 每 90 天，在静修时 |
+| 季 | `01 Journal/Quarterly/YYYY-QN.md` | `Templates/Quarterly Note.md` | 静修时写，每周扫一眼 |
+| 周 | `01 Journal/Weekly/gggg-Www.md` | `Templates/Weekly Note.md` | 周日或周一，以及周五回顾 |
+| 日 | `01 Journal/Daily/YYYY-MM-DD.md` | `Templates/Daily Note.md` | 早上和 21:00 |
 
-No annual plan, by design (8:46).
+按设计没有年度计划（8:46）。
 
-## How the layers connect
-- Periodic Notes creates each layer in its folder from its template (9:16). Templater fills the date math.
-- Daily note embeds **this week's intentions** and **this quarter's intentions** are embedded in the weekly note; the quarterly note embeds the **retreat's intentions**. One source of truth, visible at every scale.
-- Every note has a navigation line: previous, parent scale, dashboard, next.
-- `Ideal Week` is checked in the weekly note and rewritten at the retreat.
+## 层次怎么连
+- Periodic Notes 在各自文件夹里用各自的模板创建每一层（9:16）。Templater 填日期。
+- 日记嵌入**本周意图**。周记嵌入**本季意图**。季记嵌入**静修的意图**。一处书写，每一层都看得到。嵌入认的是标题 `## 本周意图`、`## 本季意图`、`## 5. 下个季度的意图`，这些标题不要改。
+- 每篇笔记有一行导航：上一篇、上一层、仪表盘、下一篇。
+- `Ideal Week` 在周记里核对，在静修时重写。嵌入认的是 `## Grid`，这个标题不要改。
 
-## Weekly note
-- Three weekly intentions, chosen against the quarterly ones.
-- Tasks due this week (Tasks query).
-- Friday review: a table of each day's effort scores and habit hits (`Meta/views/week.js`) plus wins pulled from the daily notes.
+## 周记
+- 三条本周意图，对照本季意图来选。
+- 本周到期的任务（Tasks 查询）。
+- 周五回顾：每天的努力分和习惯（`Meta/views/week.js`），以及从日记拉来的胜利。
 
-## Quarterly note
-- Focus area from the wheel.
-- Projects with `quarter: YYYY-QN` and status not done.
-- List of the quarter's weekly notes.
-- Daily questions chart locked to the quarter's dates.
+## 季记
+- 来自生命之轮的焦点领域。
+- `quarter: YYYY-QN` 且状态不是 `done` 的项目。
+- 这一季的周记列表。
+- 锁在本季日期上的每日问答图。
 
-## Practices
-- Plan the week before the week starts; adjust the calendar then, not on Thursday.
-- If a weekly intention does not trace back to a quarterly one, ask why it is there.
+## 做法
+- 周开始之前计划这一周。改日历也在那时，不要拖到周四。
+- 如果一条本周意图追溯不到本季意图，问它为什么在这里。

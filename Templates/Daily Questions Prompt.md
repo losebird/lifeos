@@ -8,23 +8,23 @@
   grade effort, not results.
 */
 const FALLBACK = [
-  ["dq_goals",         "Did I do my best to set clear goals today?"],
-  ["dq_progress",      "Did I do my best to make progress toward my goals?"],
-  ["dq_meaning",       "Did I do my best to find meaning?"],
-  ["dq_happy",         "Did I do my best to be happy?"],
-  ["dq_relationships", "Did I do my best to build positive relationships?"],
-  ["dq_engaged",       "Did I do my best to be fully engaged?"],
+  ["dq_goals",         "我今天有没有尽全力把目标说清楚？"],
+  ["dq_progress",      "我今天有没有尽全力朝目标推进？"],
+  ["dq_meaning",       "我今天有没有尽全力找到意义？"],
+  ["dq_happy",         "我今天有没有尽全力让自己开心？"],
+  ["dq_relationships", "我今天有没有尽全力建立正向的关系？"],
+  ["dq_engaged",        "我今天有没有尽全力全情投入？"],
 ];
 const file = tp.config.target_file;
 const cache = app.metadataCache.getFileCache(file) || {};
 const fm = cache.frontmatter || {};
 const cfg = app.metadataCache.getFileCache(app.vault.getAbstractFileByPath("Meta/Compass Config.md"))?.frontmatter || {};
 const HB = cfg.habit_prefix || "habit_";
-const QUESTIONS = Array.isArray(cfg.questions) && cfg.questions.length ? cfg.questions.map(q => typeof q === "string" ? [q, "Did I do my best to " + q.replace(/^dq_/, "").replace(/[_-]+/g, " ") + "?"] : [q.key, q.text]).filter(x => x[0] && x[1]) : FALLBACK;
+const QUESTIONS = Array.isArray(cfg.questions) && cfg.questions.length ? cfg.questions.map(q => typeof q === "string" ? [q, "我今天有没有尽全力做到「" + q.replace(/^dq_/, "").replace(/[_-]+/g, " ") + "」？"] : [q.key, q.text]).filter(x => x[0] && x[1]) : FALLBACK;
 const answers = {};
 let cancelled = false;
 for (const [key, q] of QUESTIONS) {
-  const a = await tp.system.prompt(`${q}  (1 = terrible, 10 = great)`, fm[key] ? String(fm[key]) : "");
+  const a = await tp.system.prompt(`${q}  （1 = 很糟，10 = 很好）`, fm[key] ? String(fm[key]) : "");
   if (a === null) { cancelled = true; break; }
   const n = parseInt(a);
   if (!isNaN(n)) answers[key] = Math.min(10, Math.max(1, n));
@@ -32,14 +32,14 @@ for (const [key, q] of QUESTIONS) {
 if (!cancelled) {
   const habits = Object.keys(fm).filter(k => k.startsWith(HB));
   for (const h of habits) {
-    const nice = h.slice(HB.length).replace(/[_-]+/g, " ");
-    const pick = await tp.system.suggester(["Yes", "No"], [true, false], false, `Habit: ${nice}?`);
+    const nice = (cfg.labels || {})[h] || h.slice(HB.length).replace(/[_-]+/g, " ");
+    const pick = await tp.system.suggester(["做了", "没做"], [true, false], false, `习惯：${nice}？`);
     if (pick === null) break;
     answers[h] = pick;
   }
 }
 if (Object.keys(answers).length) {
   await app.fileManager.processFrontMatter(file, f => { Object.assign(f, answers); });
-  new Notice(`Saved ${Object.keys(answers).length} answers to ${file.basename}`);
+  new Notice(`已把 ${Object.keys(answers).length} 项答案写入 ${file.basename}`);
 }
 -%>

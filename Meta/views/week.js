@@ -6,7 +6,8 @@ const DQ = cfg.dq_prefix || "dq_";
 const HB = cfg.habit_prefix || "habit_";
 const weekName = (input && input.week) || moment().format("gggg-[W]ww");
 const start = moment(weekName, "gggg-[W]ww").startOf("week");
-const label = (k, pre) => k.slice(pre.length).replace(/[_-]+/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+const labels = cfg.labels || {};
+const label = (k, pre) => labels[k] || k.slice(pre.length).replace(/[_-]+/g, " ").replace(/\b\w/g, c => c.toUpperCase());
 
 const days = [];
 for (let i = 0; i < 7; i++) days.push(start.clone().add(i, "day"));
@@ -18,7 +19,7 @@ for (const d of days) {
   for (const k of Object.keys(p.file.frontmatter || {})) { if (k.startsWith(DQ)) dqKeys.add(k); if (k.startsWith(HB)) hbKeys.add(k); }
 }
 const dqs = [...dqKeys].sort(), hbs = [...hbKeys].sort();
-const header = ["Day", ...dqs.map(k => label(k, DQ)), "Habits"];
+const header = ["日", ...dqs.map(k => label(k, DQ)), "习惯"];
 const rows = [];
 const sums = {}, counts = {};
 for (const d of days) {
@@ -35,6 +36,6 @@ for (const d of days) {
   cells.push(fm ? `${hit}/${hbs.length}` : "");
   rows.push(cells);
 }
-rows.push(["**Average**", ...dqs.map(k => counts[k] ? (sums[k] / counts[k]).toFixed(1) : ""), ""]);
-if (dqs.length === 0 && hbs.length === 0) dv.paragraph(`No daily notes with ${DQ}* or ${HB}* properties found for ${weekName} yet.`);
+rows.push(["**平均**", ...dqs.map(k => counts[k] ? (sums[k] / counts[k]).toFixed(1) : ""), ""]);
+if (dqs.length === 0 && hbs.length === 0) dv.paragraph(`${weekName} 还没有带 ${DQ}* 或 ${HB}* 属性的日记。`);
 else dv.table(header, rows);

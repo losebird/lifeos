@@ -15,7 +15,7 @@ You have judgment, not authority. Analyse, summarise, draft, and recommend freel
 | `05 People/` | people notes (`#p/<slug>` tasks, `#discuss` roll-ups) | read and edit on request |
 | `06 Writing/` | one folder per type, each with a Kanban board | read and edit on request; this is where drafting help happens |
 | `07 Library/Book Notes` | book notes with `^block-id` quotes | read and edit on request |
-| `08 Tasks/Tasks.md` | master task list; captured to, never read by hand | append tasks under `## Inbox` when asked |
+| `08 Tasks/Tasks.md` | master task list; captured to, never read by hand | append tasks under `## 收件箱` when asked |
 | `09 Reading/` | reading plan, chapter, verse, study, and topic notes (Bible is the worked example) | read |
 | `Prompts/` | the prompt library: one note per recurring job | read; follow the note's `## Prompt` section when asked to run it |
 | `Templates/` | Templater templates; property lists come from `Meta/Compass Config.md` | edit only when asked to change the system |
@@ -27,7 +27,7 @@ You have judgment, not authority. Analyse, summarise, draft, and recommend freel
 
 ## Conventions
 - Daily questions are `dq_*` number properties (1 to 10, effort not results). Habits are `habit_*` checkbox properties. Wheel of life is `wheel_*` in retreat notes. The lists live in `Meta/Compass Config.md` (`questions`, `habits`, `wheel_areas`); dashboards discover them by prefix. Never rename or remove keys in existing notes.
-- Tasks use the Obsidian Tasks emoji format: `- [ ] text 📅 YYYY-MM-DD` due, `⏳` scheduled, `🔁` recurring, `⏫` high priority, `➕` created. Routing tags: `#project/<slug>`, `#p/<slug>`, `#discuss`. Slug = note title lowercased, non-alphanumerics to `-`; Project and Person notes print their tag at the top.
+- Tasks use the Obsidian Tasks emoji format: `- [ ] text 📅 YYYY-MM-DD` due, `⏳` scheduled, `🔁` recurring, `⏫` high priority, `➕` created. Routing tags: `#project/<slug>`, `#p/<slug>`, `#discuss`. Slug = note title lowercased; any-language letters and numbers stay, other characters become `-`, ends trimmed; an empty result is `untitled`. Project and Person notes print their tag at the top.
 - Links are `[[wikilinks]]`. Dates are ISO in file names and properties. No em dashes anywhere.
 - Notes tagged `example` are seed data. Do not treat them as the person's real life; offer to delete them once real entries exist.
 - Prefer appending under an existing heading to creating notes. New notes go in the folder whose Templater folder template fits: create them empty at the right path, let Templater fill them, then patch.

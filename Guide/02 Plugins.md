@@ -1,88 +1,92 @@
-## Named in the video
-| Plugin | ID (community) | Used for | Where configured |
+## 视频里点名的
+| 插件 | 社区 ID | 用来做什么 | 配置在哪 |
 | --- | --- | --- | --- |
-| **QuickAdd** | `quickadd` | Capture journal entries, wins, gratitude to the daily note; tasks to the master list; ideas to the Kanban backlogs (4:40, 17:51) | `.obsidian/plugins/quickadd/data.json` (8 capture choices, all registered as commands) |
-| **Periodic Notes** | `periodic-notes` | Daily, weekly, quarterly notes with their own templates and folders (9:16) | `.obsidian/plugins/periodic-notes/data.json` |
-| **Obsidian Tasks** | `obsidian-tasks-plugin` | Inline tasks, `tasks` query blocks on dashboards, people, projects, and the Bible reading callout (14:37) | `.obsidian/plugins/obsidian-tasks-plugin/data.json` |
-| **Dataview** (DataviewJS) | `dataview` | Habit dashboard, daily questions widget, wheel of life, projects dashboard (10:47, 18:49) | `.obsidian/plugins/dataview/data.json`, JS enabled |
-| **Kanban** | `obsidian-kanban` | One board per writing type (17:44) | Boards in `06 Writing/*/… Board.md` |
-| **Bases** (core, Obsidian 1.9+) | built-in | Mike's "on this day" query in the daily note (5:01) | This vault uses a DataviewJS block for "on this day" so the daily note works on any version; a Bases equivalent is in the guide below |
+| **QuickAdd** | `quickadd` | 把日记、胜利、感恩收进当天笔记；任务收进总表；想法收进看板待办（4:40，17:51） | `.obsidian/plugins/quickadd/data.json`（8 个捕捉选项，都登记成了命令） |
+| **Periodic Notes** | `periodic-notes` | 日、周、季笔记，各自的模板和文件夹（9:16） | `.obsidian/plugins/periodic-notes/data.json` |
+| **Obsidian Tasks** | `obsidian-tasks-plugin` | 行内任务，仪表盘、人物、项目和阅读提示里的 `tasks` 查询（14:37） | `.obsidian/plugins/obsidian-tasks-plugin/data.json` |
+| **Dataview**（DataviewJS） | `dataview` | 习惯仪表盘、每日问答、生命之轮、项目仪表盘（10:47，18:49） | `.obsidian/plugins/dataview/data.json`，已打开 JavaScript |
+| **Kanban** | `obsidian-kanban` | 每种写作一块看板（17:44） | `06 Writing/*/… Board.md` |
+| **Bases**（核心，Obsidian 1.9 及以上） | 内置 | Mike 在日记里的「往年今日」查询（5:01） | 这个库用 DataviewJS 做往年今日，所以任何版本都能用。下面有一段可换成 Bases 的写法 |
 
-## Added after the video (owner's choices)
-| Plugin | ID | Used for | Guide |
+## 视频之后加上的（主人的选择）
+| 插件 | ID | 用来做什么 | 说明 |
 | --- | --- | --- | --- |
-| **Agent Client** 0.12.1 | `agent-client` | Claude Code inside Obsidian; buttons and embedded chat on the dashboards | [[14 Agent Client and Claude Code]] |
-| **SEO** 0.5.6 | `seo` | audit notes in `06 Writing` before publishing | [[16 SEO, Web Viewer, and Vault Lens]] |
-| **Omnisearch** 1.30.1 | `omnisearch` | better in-vault search; search provider for the Vault Lens browser extension | [[17 Search Providers]] |
-| **Local REST API** 5.1.0 | `obsidian-local-rest-api` | provider for Vault Lens note preview and editing from the browser; general local API | [[17 Search Providers]] |
-| **Web viewer** (core) | `webviewer` | browse and clip inside Obsidian | [[16 SEO, Web Viewer, and Vault Lens]] |
+| **Agent Client** 0.12.1 | `agent-client` | 在 Obsidian 里跑本地助手；仪表盘上的按钮和嵌入聊天 | [[14 Agent Client and Claude Code]] |
+| **SEO** 0.5.6 | `seo` | 发布前检查 `06 Writing` 里的笔记 | [[16 SEO, Web Viewer, and Vault Lens]] |
+| **Omnisearch** 1.30.1 | `omnisearch` | 更好的库内搜索；给 Vault Lens 当搜索提供方 | [[17 Search Providers]] |
+| **Local REST API** 5.1.0 | `obsidian-local-rest-api` | 让 Vault Lens 从浏览器预览和编辑笔记；也是一般的本地接口 | [[17 Search Providers]] |
+| **网页查看器**（核心） | `webviewer` | 在 Obsidian 里浏览和剪藏 | [[16 SEO, Web Viewer, and Vault Lens]] |
 
-## Added to make the template work
-| Plugin | ID | Why |
+## 为了让模板能工作而加上的
+| 插件 | ID | 为什么 |
 | --- | --- | --- |
-| **Templater** | `templater-obsidian` | Mike says "template files"; Periodic Notes needs a template engine for the date math in the weekly/quarterly notes, and the Daily Questions Prompt (writing 1 to 10 answers into properties, his "custom shortcut" at 4:29) is a Templater script. Folder templates auto-apply Project, Person, Retreat, and writing templates. |
+| **Templater** | `templater-obsidian` | Mike 说的是「模板文件」。Periodic Notes 需要模板引擎来算周记和季记的日期。晚间问答（把 1 到 10 写进属性，他在 4:29 说的自定义快捷键）是一段 Templater 脚本。文件夹模板会自动套上项目、人物、静修和写作模板。 |
 
-## First-party application
-| Plugin | ID | Why |
+## 一等应用
+| 插件 | ID | 为什么 |
 | --- | --- | --- |
-| **Life OS** | `life-os-app` | Native app shell, persistent navigation, universal capture, live system status, and privacy-preserving workflow panels. It reads the same Markdown and properties as the dashboards and does not create a second database. See [[21 Life OS Application]]. |
+| **Life OS** | `life-os-app` | 应用壳、固定导航、统一捕捉、实时状态，以及不另建数据库的工作流面板。它读的是和仪表盘同一份 Markdown 和属性。见 [[21 Life OS Application]]。 |
 
-Links: QuickAdd https://github.com/chhoumann/quickadd · Periodic Notes https://github.com/liamcain/obsidian-periodic-notes · Tasks https://github.com/obsidian-tasks-group/obsidian-tasks · Dataview https://github.com/blacksmithgu/obsidian-dataview · Kanban https://github.com/mgmeyers/obsidian-kanban · Templater https://github.com/SilentVoid13/Templater
+链接：QuickAdd https://github.com/chhoumann/quickadd · Periodic Notes https://github.com/liamcain/obsidian-periodic-notes · Tasks https://github.com/obsidian-tasks-group/obsidian-tasks · Dataview https://github.com/blacksmithgu/obsidian-dataview · Kanban https://github.com/mgmeyers/obsidian-kanban · Templater https://github.com/SilentVoid13/Templater
 
-## First open checklist
-All ten community plugins and the first-party Life OS plugin are **already installed** in `.obsidian/plugins/` and listed as enabled in `community-plugins.json`.
+## 第一次打开要核对的
+十个社区插件和 Life OS 已经装在 `.obsidian/plugins/` 里，并在 `community-plugins.json` 里列为启用。
 
-1. Settings → Community plugins → **Turn off Restricted mode** (Obsidian asks this once per vault; it is not stored in the vault files). If the plugins do not light up immediately, run the command **Reload app without saving**. Life OS opens automatically when the vault layout is ready. You can reopen it later with the compass ribbon icon or **Life OS: Open Life OS home**.
-2. Settings → Appearance → CSS snippets → make sure `lifeos` is on (custom callouts: `reading`, `intention`, `memento`, `theme`).
-3. Templater: confirm **Trigger Templater on new file creation** and **Folder templates** are on.
-4. Periodic Notes: confirm daily `YYYY-MM-DD` → `01 Journal/Daily`, weekly `gggg-[W]ww` → `01 Journal/Weekly`, quarterly `YYYY-[Q]Q` → `01 Journal/Quarterly`, each with its template. The core Daily Notes plugin is off. Note creation goes through the QuickAdd template commands (hotkeys below), which run Templater on the new note; Periodic Notes and the Calendar are used to navigate. If a note opened from a link is empty or shows `<%` code, press `Alt+E` (Templater: Insert template) and pick the template.
-5. QuickAdd: confirm the twenty choices show and each has the lightning-bolt "command" toggle on. Eight capture into existing notes, four open periodic notes, and eight create Project, Person, creative, book, or study notes from their canonical templates.
-6. Dataview: **Enable JavaScript queries** is on (pre-set).
-7. Open `00 Dashboards/Compass Dashboard.md`. If a widget says "No … found", that is the empty-state message, not an error.
+1. 设置 → 第三方插件 → **关闭受限模式**（Obsidian 每个库问一次，这个选择不存在库文件里）。如果插件没有马上亮起，运行 **Reload app without saving**。库布局就绪后 Life OS 会自己打开。之后用罗盘图标或命令 **打开 Life OS 首页** 再打开。
+2. 设置 → 外观 → CSS 片段：确认 `lifeos` 开着（自定义提示：`reading`、`intention`、`memento`、`theme`）。
+3. Templater：确认 **新建文件时触发 Templater** 和 **文件夹模板** 开着。
+4. Periodic Notes：日记 `YYYY-MM-DD` → `01 Journal/Daily`，周记 `gggg-[W]ww` → `01 Journal/Weekly`，季记 `YYYY-[Q]Q` → `01 Journal/Quarterly`，各自挂上模板。核心的 Daily Notes 插件是关的。创建笔记走下面的 QuickAdd 命令，它们会在新笔记上跑 Templater。Periodic Notes 和日历用来浏览。如果从链接打开的笔记是空的，或还显示 `<%` 代码，按 `Alt+E`（Templater: Insert template）选对应模板。
+5. QuickAdd：确认二十个选项都在，并且每个都打开了闪电形的「命令」开关。八个往已有笔记里追加，四个打开周期笔记，八个用模板创建项目、人物、写作、读书笔记或研读笔记。
+6. Dataview：**启用 JavaScript 查询** 已打开（预置）。
+7. 打开 `00 Dashboards/Compass Dashboard.md`。小部件如果写着还没有数据，那是空状态，不是报错。
 
-## Hotkeys (pre-seeded in `.obsidian/hotkeys.json`)
-| Keys | Action |
+## 快捷键（预先写在 `.obsidian/hotkeys.json`）
+| 按键 | 做什么 |
 | --- | --- |
-| Ctrl/Cmd+Shift+L | Open the Life OS application |
-| Ctrl/Cmd+Shift+C | Open universal Capture |
-| Ctrl/Cmd+Shift+D | Create or open today's daily note (QuickAdd runs the template through Templater) |
-| Ctrl/Cmd+Alt+W | Create or open this week's note |
-| Ctrl/Cmd+Alt+Q | Create or open this quarter's note |
-| Ctrl/Cmd+Shift+J | Journal entry (timestamped, into today's note) |
-| Ctrl/Cmd+Shift+W | Log a win |
-| Ctrl/Cmd+Shift+G | Gratitude |
-| Ctrl/Cmd+Shift+T | Add task to the master list |
-| Ctrl/Cmd+Shift+Q | Daily Questions Prompt (run with today's note open) |
+| Ctrl/Cmd+Shift+L | 打开 Life OS |
+| Ctrl/Cmd+Shift+C | 打开统一捕捉 |
+| Ctrl/Cmd+Shift+D | 创建或打开今天的日记（QuickAdd 通过 Templater 跑模板） |
+| Ctrl/Cmd+Alt+W | 创建或打开本周笔记 |
+| Ctrl/Cmd+Alt+Q | 创建或打开本季笔记 |
+| Ctrl/Cmd+Shift+J | 记一笔（带时间，写入今天的笔记） |
+| Ctrl/Cmd+Shift+W | 记一个胜利 |
+| Ctrl/Cmd+Shift+G | 记一条感恩 |
+| Ctrl/Cmd+Shift+T | 把任务加进总表 |
+| Ctrl/Cmd+Shift+Q | 晚间问答（先打开今天的日记） |
 
-Change them in Settings → Hotkeys. They take effect after a reload.
+在设置 → 快捷键里改。重新加载后生效。
 
-To update a plugin later use Settings → Community plugins → Check for updates, as usual.
+以后更新插件：设置 → 第三方插件 → 检查更新，和平时一样。
 
-## QuickAdd capture choices (recreate by hand if the seeded config is rejected)
-| Name | Capture to | Format | Insert after |
+## QuickAdd 捕捉选项（如果预置配置被拒绝，按这张表重建）
+名字要和现在的选项一致。仪表盘上的按钮是按名字找到它们的。
+
+| 名字 | 写到哪里 | 格式 | 追加到哪个标题后 |
 | --- | --- | --- | --- |
-| 📝 Journal entry | `01 Journal/Daily/{{DATE:YYYY-MM-DD}}.md` (create with Daily Note template) | `- {{DATE:HH:mm}} {{VALUE}}` | `## Journal` |
-| 🏆 Log a win | same | `- {{VALUE}}` | `## Wins` |
-| 🙏 Gratitude | same | `- {{VALUE}}` | `## Gratitude` |
-| ✅ Add task | `08 Tasks/Tasks.md` | `- [ ] {{VALUE}} ➕ {{DATE:YYYY-MM-DD}}` | `## Inbox` |
+| 📝 记一笔 | `01 Journal/Daily/{{DATE:YYYY-MM-DD}}.md`（用日记模板创建） | `- {{DATE:HH:mm}} {{VALUE}}` | `## 日记` |
+| 🏆 记一个胜利 | 同上 | `- {{VALUE}}` | `## 胜利` |
+| 🙏 感恩 | 同上 | `- {{VALUE}}` | `## 感恩` |
+| ✅ 添加任务（总表） | `08 Tasks/Tasks.md` | `- [ ] {{VALUE}} ➕ {{DATE:YYYY-MM-DD}}` | `## 收件箱` |
 | ✉️ Newsletter idea | `06 Writing/Newsletters/Newsletter Board.md` | `- [ ] {{VALUE}}` | `## Backlog` |
 | 🎬 Video idea | `06 Writing/YouTube Scripts/YouTube Board.md` | `- [ ] {{VALUE}}` | `## Backlog` |
 | 📰 Article idea | `06 Writing/Articles/Article Board.md` | `- [ ] {{VALUE}}` | `## Backlog` |
 | 💡 Project idea | `04 Projects/Projects Board.md` | `- [ ] {{VALUE}}` | `## Ideas` |
-| 📅 Open today's note, 🗓️ this week's, 🧭 this quarter's, 🏕️ New personal retreat | Template choices: create the note from the template in the right folder with the date name, run Templater, open it (or just open it if it exists) | | |
-| 📁 New project | `04 Projects/{{VALUE}}.md` from `Templates/Project.md` | Prompt for the project name, create and open the note; an existing note is never overwritten | |
-| 👤 New person | `05 People/{{VALUE}}.md` from `Templates/Person.md` | Prompt for the person's name, create and open the note; an existing note is never overwritten | |
-| ✉️ New newsletter | `06 Writing/Newsletters/{{VALUE}}.md` from `Templates/Newsletter.md` | Prompt for the title, create and open the draft; an existing note is never overwritten | |
-| 🎬 New video script | `06 Writing/YouTube Scripts/{{VALUE}}.md` from `Templates/YouTube Script.md` | Prompt for the title, create and open the script; an existing note is never overwritten | |
-| 📰 New article | `06 Writing/Articles/{{VALUE}}.md` from `Templates/Article.md` | Prompt for the title, create and open the draft; an existing note is never overwritten | |
-| 🎓 New course lesson | `06 Writing/Course Content/{{VALUE}}.md` from `Templates/Course Lesson.md` | Prompt for the title, create and open the lesson; an existing note is never overwritten | |
-| 📚 New book note | `07 Library/Book Notes/{{VALUE}}.md` from `Templates/Book Note.md` | Prompt for the title, create and open the book note; an existing note is never overwritten | |
-| 📖 New study note | `09 Reading/Study Notes/{{VALUE}}.md` from `Templates/Study Note.md` | Prompt for the title, create and open the study note; an existing note is never overwritten | |
+| 📅 打开今天的笔记、🗓️ 本周、🧭 本季、🏕️ 新建本季静修 | 模板选项：在正确的文件夹里按日期名从模板创建，跑 Templater，然后打开。已存在就只打开 | | |
+| 📁 New project | `04 Projects/{{VALUE}}.md`，来自 `Templates/Project.md` | 询问项目名，创建并打开。同名笔记不会被覆盖 | |
+| 👤 New person | `05 People/{{VALUE}}.md`，来自 `Templates/Person.md` | 询问人名，创建并打开。同名笔记不会被覆盖 | |
+| ✉️ New newsletter | `06 Writing/Newsletters/{{VALUE}}.md`，来自 `Templates/Newsletter.md` | 询问标题，创建并打开。同名笔记不会被覆盖 | |
+| 🎬 New video script | `06 Writing/YouTube Scripts/{{VALUE}}.md`，来自 `Templates/YouTube Script.md` | 询问标题，创建并打开。同名笔记不会被覆盖 | |
+| 📰 New article | `06 Writing/Articles/{{VALUE}}.md`，来自 `Templates/Article.md` | 询问标题，创建并打开。同名笔记不会被覆盖 | |
+| 🎓 New course lesson | `06 Writing/Course Content/{{VALUE}}.md`，来自 `Templates/Course Lesson.md` | 询问标题，创建并打开。同名笔记不会被覆盖 | |
+| 📚 New book note | `07 Library/Book Notes/{{VALUE}}.md`，来自 `Templates/Book Note.md` | 询问标题，创建并打开。同名笔记不会被覆盖 | |
+| 📖 New study note | `09 Reading/Study Notes/{{VALUE}}.md`，来自 `Templates/Study Note.md` | 询问标题，创建并打开。同名笔记不会被覆盖 | |
 
-The dashboard's capture buttons find these choices by name at click time, so you can rename ids freely.
+看板那几行的 `## Backlog` 和 `## Ideas` 是 QuickAdd 要寻找的标题，必须和看板文件里的二级标题一致。不要只改说明、不改看板。
 
-## "On this day" with Bases (optional swap)
-Create `Meta/On This Day.base` and embed it in the daily template with `![[On This Day.base]]`:
+仪表盘的捕捉按钮在点击时按名字找这些选项，所以选项的内部 id 可以改，显示名字要和按钮对得上。
+
+## 用 Bases 做「往年今日」（可选替换）
+创建 `Meta/On This Day.base`，在日记模板里用 `![[On This Day.base]]` 嵌入：
 ```yaml
 filters:
   and:
@@ -98,4 +102,4 @@ views:
       - property: file.name
         direction: DESC
 ```
-Bases formula syntax is still evolving; verify against https://help.obsidian.md/bases/functions on your Obsidian version.
+Bases 的公式语法还在变。按你的 Obsidian 版本对照 https://help.obsidian.md/bases/functions。

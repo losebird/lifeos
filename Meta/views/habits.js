@@ -24,11 +24,14 @@ for (const p of pages) {
 
 const root = dv.container.createEl("div", { cls: "lifeos-widget" });
 if (habits.size === 0) {
-  root.createEl("p", { text: `No checkbox properties starting with "${PREFIX}" found in ${FOLDER} yet. Add some to Templates/Daily Note.md and start checking them off.` });
+  root.createEl("p", { text: `${FOLDER} 里还没有以「${PREFIX}」开头的勾选属性。在 Compass Config 的 habits 里添加，然后开始打卡。` });
 } else {
   const today = moment().startOf("day");
   const fmt = d => d.format("YYYY-MM-DD");
-  const label = k => k.slice(PREFIX.length).replace(/[_-]+/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+  const labels = Object.assign({
+    habit_journal: "写日记", habit_exercise: "锻炼", habit_reading: "阅读",
+  }, cfg.labels || {});
+  const label = k => labels[k] || k.slice(PREFIX.length).replace(/[_-]+/g, " ").replace(/\b\w/g, c => c.toUpperCase());
   const dates = [...byDate.keys()].sort();
   const first = moment(dates[0]);
   const rows = [];
@@ -64,7 +67,7 @@ if (habits.size === 0) {
 
   const table = root.createEl("table", { cls: "lifeos-table" });
   const thead = table.createEl("thead").createEl("tr");
-  for (const h of ["Habit", `Last ${DAYS} days`, "Current", "Best", "Longest break", "Completion", "Total"]) thead.createEl("th", { text: h });
+  for (const h of ["习惯", `近 ${DAYS} 天`, "当前", "最长", "最长中断", "完成率", "合计"]) thead.createEl("th", { text: h });
   const tbody = table.createEl("tbody");
   for (const r of rows) {
     const tr = tbody.createEl("tr");
@@ -76,5 +79,5 @@ if (habits.size === 0) {
     tr.createEl("td", { text: r.pct + "%" });
     tr.createEl("td", { text: String(r.total) });
   }
-  root.createEl("p", { text: "● done   ○ tracked but missed   · no daily note", cls: "lifeos-legend" }).style.opacity = "0.6";
+  root.createEl("p", { text: "● 完成   ○ 记了但没做   · 没有日记", cls: "lifeos-legend" }).style.opacity = "0.6";
 }

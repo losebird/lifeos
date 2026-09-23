@@ -14,8 +14,8 @@ Task format (Obsidian Tasks plugin, emoji format):
 - `- [ ] Ask about budget #discuss #p/jane-doe` shows on Alex's note and in the To discuss query
 - `- [ ] Draft outline #project/lifeos-vault` shows on the project note
 
-## Inbox
-- [ ] Open the Setup dashboard and work through it, then tick this off
+## 收件箱
+- [x] Open the Setup dashboard and work through it, then tick this off ✅ 2026-09-24
 
-## Someday
+## 以后
 - 

@@ -1,15 +1,15 @@
-Mike's warning (22:42): it took him five years; copying it in a weekend is "a fantastic way to bounce off of Obsidian entirely." Pick one workflow, run it for 30 days, then add the next.
+Mike 的提醒（22:42）：他用了五年。一个周末抄完全部，是「彻底离开 Obsidian 的好办法」。选一条工作流，跑 30 天，再加下一条。
 
-| Days | Layer | Definition of done |
+| 天数 | 这一层 | 怎样算做成 |
 | --- | --- | --- |
-| 1 to 30 | **Daily journaling + daily questions** | Daily note opened every morning, questions answered every night, at least 25 of 30 days scored |
-| 31 to 60 | **Habits** (3 to 5 checkboxes) + **weekly note** | Friday review done 4 weeks running using the week table |
-| 61 to 90 | **First personal retreat** + quarterly note + life theme and values | Retreat note complete, wheel rendered, 3 intentions embedded in the weekly note |
-| 91 to 120 | **Tasks**: master list, dashboard, 2 to 3 project notes, people notes for regulars | A week executed from the dashboard with time blocking |
-| 121 to 150 | **Writing**: one board, one type, block-id quotes in book notes | One piece taken from backlog to published inside the vault |
-| 151+ | **Reading plan / Bible module**, second retreat, dashboard tuning | Second retreat compared against the first |
+| 1 到 30 | **每日日记 + 每日问答** | 每天早上打开日记，每天晚上回答问题，30 天里至少 25 天有分数 |
+| 31 到 60 | **习惯**（3 到 5 个勾选）+ **周记** | 连续 4 个周五用周表做完回顾 |
+| 61 到 90 | **第一次个人静修** + 季记 + 生命主题和价值观 | 静修笔记写完，生命之轮画出来，3 条意图嵌进周记 |
+| 91 到 120 | **任务**：总表、仪表盘、2 到 3 篇项目笔记、常联系的人 | 有一周是看着仪表盘选事，再排进时间块 |
+| 121 到 150 | **写作**：一块看板、一种体裁、读书笔记里的块引用 | 有一篇从待办写到在库里发布 |
+| 151 天以后 | **阅读计划 / 圣经模块**、第二次静修、微调仪表盘 | 第二次静修能和第一次对照 |
 
-Rules:
-- Do not add a layer while the previous one is below 80% consistency.
-- Delete what you do not use. A widget that shows nothing is a seam.
-- Change the templates, not the dashboards.
+规则：
+- 上一层还没稳定到大约八成，不要加下一层。
+- 不用的就删。一个永远是空的小部件是裂缝。
+- 改模板，不要改仪表盘去迁就模板。

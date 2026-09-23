@@ -529,7 +529,7 @@ try {
     }
     if (screen === "today") {
       todayHasPropertyValues =
-        treeHasText(view.contentEl, "8/10") && treeHasText(view.contentEl, "Done");
+        treeHasText(view.contentEl, "8/10") && treeHasText(view.contentEl, "已完成");
     }
   }
   check("all application screens render", emptyScreens.length === 0, emptyScreens.join(", "));
@@ -605,7 +605,7 @@ try {
     "task feed exposes partial index coverage",
     treeHasText(
       view.contentEl,
-      "4 open, 1 unreadable, 1 metadata pending, 1 unresolved status, 1 sample excluded"
+      "4 项未完成, 1 项读不出, 1 项元数据未就绪, 1 项状态无法识别, 1 项示例已排除"
     )
   );
   check(
@@ -619,23 +619,23 @@ try {
   view.render();
   check(
     "permission status reports observable policy without enforcement claim",
-    treeHasText(view.contentEl, "Manual prompts") &&
-      treeHasText(view.contentEl, "Client setting is off. This reports policy, not enforcement.") &&
+    treeHasText(view.contentEl, "需手动确认") &&
+      treeHasText(view.contentEl, "客户端已关闭自动批准。这里只报告设置，并不保证每次都会拦住。") &&
       !treeHasText(view.contentEl, "Required for every write")
   );
   pluginInstances.get("agent-client").settings.autoAllowPermissions = true;
   view.render();
   check(
     "permission status warns when auto-allow is enabled",
-    treeHasText(view.contentEl, "Auto-allow on") &&
-      treeHasText(view.contentEl, "Client may auto-approve requests. This reports policy, not enforcement.")
+    treeHasText(view.contentEl, "自动批准已开启") &&
+      treeHasText(view.contentEl, "客户端可能会自动批准请求。这里只报告设置，并不保证拦截。")
   );
   delete pluginInstances.get("agent-client").settings.autoAllowPermissions;
   view.render();
   check(
     "permission status remains unknown when setting is unobservable",
-    treeHasText(view.contentEl, "Unknown") &&
-      treeHasText(view.contentEl, "Permission setting was not observable. No enforcement claim.")
+    treeHasText(view.contentEl, "未知") &&
+      treeHasText(view.contentEl, "读不到权限设置。这里不作拦截保证。")
   );
   pluginInstances.get("agent-client").settings.autoAllowPermissions = false;
 
@@ -653,7 +653,7 @@ try {
     "Today rejects boolean effort scores",
     strictToday.questionRecorded === 0 &&
       strictToday.questions[0]?.state === "invalid" &&
-      strictToday.questions[0]?.display === "Invalid value"
+      strictToday.questions[0]?.display === "数值无效"
   );
   check(
     "Today distinguishes unchecked, missing, and invalid habits",
@@ -662,7 +662,7 @@ try {
       strictToday.habits.map((habit) => habit.state).join(",") ===
         "unchecked,missing,invalid" &&
       strictToday.habits.map((habit) => habit.display).join(",") ===
-        "Unchecked,Not recorded,Invalid value"
+        "未打卡,未记录,数值无效"
   );
   const coverage = view.summarizeDailyProperties(
     {
@@ -766,6 +766,13 @@ try {
   fakeLeaf.view = view;
   fakeApp.workspace.getLeavesOfType = () => [fakeLeaf];
   await plugin.activateView("today");
+  check(
+    "Chinese titles keep letters in routing slugs",
+    moduleBox.exports.compassSlug("人生系统") === "人生系统" &&
+      moduleBox.exports.compassSlug("Example Project - Compass Vault") === "example-project-compass-vault" &&
+      moduleBox.exports.compassSlug("Life OS 计划") === "life-os-计划" &&
+      moduleBox.exports.compassSlug("!!!") === "untitled"
+  );
   check("view activation state", fakeLeaf.state?.type === "life-os-home", fakeLeaf.state?.type);
   check("direct module activation", view.activeScreen === "today", view.activeScreen);
 
@@ -785,12 +792,12 @@ try {
   view.render();
   const findText = (element, text) => element.options?.text === text ? element :
     element.children.map((child) => findText(child, text)).find(Boolean);
-  check("Home keeps full analytics in Review", !findText(view.contentEl, "7 days") && !!findText(view.contentEl, "Explore Review"));
+  check("Home keeps full analytics in Review", !findText(view.contentEl, "7 天") && !!findText(view.contentEl, "查看回顾"));
   view.activeScreen = "review";
   view.render();
-  findText(view.contentEl, "7 days").handlers.click();
+  findText(view.contentEl, "7 天").handlers.click();
   check("chart range control changes aggregation window", view.getAnalytics().days.length === 7);
-  findText(view.contentEl, "Include samples").handlers.click();
+  findText(view.contentEl, "计入示例").handlers.click();
   check("sample control changes state", view.includeExamples === true);
   view.analyticsDays = 30;
   view.includeExamples = false;

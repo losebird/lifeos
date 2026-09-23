@@ -23,17 +23,20 @@ for (const p of pages) {
   }
 }
 const keys = Object.keys(series).sort();
-const label = k => k.slice(PREFIX.length).replace(/[_-]+/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+const labels = Object.assign({
+  dq_goals: "目标", dq_progress: "进展", dq_meaning: "意义", dq_happy: "快乐", dq_relationships: "关系", dq_engaged: "投入",
+}, cfg.labels || {});
+const label = k => labels[k] || k.slice(PREFIX.length).replace(/[_-]+/g, " ").replace(/\b\w/g, c => c.toUpperCase());
 
 const root = dv.container.createEl("div", { cls: "lifeos-widget" });
 if (keys.length === 0) {
-  root.createEl("p", { text: `No number properties starting with "${PREFIX}" found in ${FOLDER} yet. Answer your daily questions (Templates/Daily Questions Prompt.md) and they will show up here.` });
+  root.createEl("p", { text: `${FOLDER} 里还没有以「${PREFIX}」开头的分数。回答每日问答后，它们会出现在这里。` });
 } else {
   const controls = root.createEl("div", { cls: "lifeos-controls" });
   let sel = null;
   if (!FIXED_FROM) {
     sel = controls.createEl("select");
-    for (const [v, l] of [[7, "Last 7 days"], [30, "Last 30 days"], [90, "Last 90 days"], [365, "Last year"], [0, "All time"]]) {
+    for (const [v, l] of [[7, "近 7 天"], [30, "近 30 天"], [90, "近 90 天"], [365, "近一年"], [0, "全部"]]) {
       const o = sel.createEl("option", { text: l });
       o.value = String(v);
       if (v === DEFAULT_RANGE) o.selected = true;
@@ -92,7 +95,7 @@ if (keys.length === 0) {
     });
     svg += `</svg>`;
     chart.innerHTML = svg;
-    let html = `<table class="lifeos-table"><thead><tr><th>Question</th><th>Average</th><th>Min</th><th>Max</th><th>Days answered</th><th>Latest</th></tr></thead><tbody>`;
+    let html = `<table class="lifeos-table"><thead><tr><th>问题</th><th>平均</th><th>最低</th><th>最高</th><th>作答天数</th><th>最近</th></tr></thead><tbody>`;
     for (const r of rows) html += `<tr>${r.map(c => `<td>${c}</td>`).join("")}</tr>`;
     html += `</tbody></table>`;
     tableEl.innerHTML = html;

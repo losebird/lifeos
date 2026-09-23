@@ -9,39 +9,42 @@ people: []
 tags:
   - project
 ---
-Tag tasks anywhere in the vault with `#project/<% tp.file.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") %>` and they roll up here. Every task stays one click from the context that explains why it exists.
+<%*
+var slug = String(tp.file.title || "").trim().toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "-").replace(/^-+|-+$/g, "") || "untitled";
+%>
+在库里任何地方给任务加上 `#project/<% slug %>`，它们会汇总到这里。
 
 ```agent
 type: button
-text: "Kick off this project"
+text: "启动这个项目"
 prompt: "Read Prompts/08 Project Kickoff.md with vault_read and follow its Prompt section for the note I have open (or the current period if none applies)."
 viewType: right-pane
 ```
 
-## Outcome
-What "done" looks like:
+## 结果
+完成后是什么样：
 - 
 
-## Next actions
+## 下一步
 ```tasks
 not done
-tags include #project/<% tp.file.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") %>
+tags include #project/<% slug %>
 sort by due
 ```
 
-## Inline tasks
-- [ ] First step #project/<% tp.file.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") %>
+## 笔记里的任务
+- [ ] 第一步 #project/<% slug %>
 
-## Notes
+## 笔记
 
 
-## Log
-- <% tp.date.now("YYYY-MM-DD") %> Created.
+## 日志
+- <% tp.date.now("YYYY-MM-DD") %> 创建。
 
-## Done
+## 已完成
 ```tasks
 done
-tags include #project/<% tp.file.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") %>
+tags include #project/<% slug %>
 sort by done reverse
 limit 20
 ```

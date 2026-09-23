@@ -2,62 +2,62 @@
 cssclasses:
   - lifeos-dashboard
 ---
-Everything below is generated from the notes you already write. Change the daily note template, the retreat note, or the config and this page follows. You never touch this code.
+下面的内容都从你已经写下的笔记生成。改日记模板、静修笔记或配置，这一页会跟着变。
 
 ```dataviewjs
 await dv.view("Meta/views/quicklinks");
 ```
 
-> [!theme] Life theme
+> [!theme] 生命主题
 > ![[Life Theme#Theme]]
 
-## Wheel of life (this quarter's retreat)
+## 生命之轮（本季静修）
 ```dataviewjs
 await dv.view("Meta/views/wheel");
 ```
 
-## Daily questions
-Lines and averages of every `dq_*` property in the daily notes. Toggle questions, pick a time frame.
+## 每日问答
+日记里每个 `dq_*` 的折线和平均。可以开关某一题，也可以换时间范围。
 ```dataviewjs
 await dv.view("Meta/views/dailyquestions", { days: 30 });
 ```
 
-## Habits
+## 习惯
 ```dataviewjs
 await dv.view("Meta/views/habits", { days: 21 });
 ```
 
-## Boards
+## 看板
 ```dataviewjs
 await dv.view("Meta/views/boards", { compact: true });
 ```
 
-## Memento mori
+## 死亡提醒
 ```dataviewjs
 await dv.view("Meta/views/memento");
 ```
 
-## Ask
-Open [[Assistant]] for the full prompt library, or fire one of these (needs the Agent Client plugin and a configured agent):
+## 问
+打开 [[Assistant|助手]] 看全部提示词，或用下面的按钮（需要 Agent Client 和一个已配置的助手）：
 ```agent
 type: button
-text: "What matters today"
+text: "今天最重要的事"
 prompt: "Read Prompts/14 What Matters Today.md with vault_read and follow its Prompt section for the note I have open (or the current period if none applies)."
 viewType: right-pane
 ```
 ```agent
 type: button
-text: "Review this week"
+text: "回顾这一周"
 prompt: "Read Prompts/03 Weekly Review.md with vault_read and follow its Prompt section for the note I have open (or the current period if none applies)."
 viewType: right-pane
 ```
 
-## Related dashboards
-- [[Habit Canvas]]
-- [[Daily Questions]]
-- [[Task Dashboard]]
-- [[Projects Dashboard]]
-- [[Boards]]
+## 相关仪表盘
+- [[Habit Canvas|习惯画布]]
+- [[Daily Questions|每日问答]]
+- [[Task Dashboard|任务]]
+- [[Projects Dashboard|项目]]
+- [[Boards|看板]]
 - [[Assistant]]
 - [[Setup]]
 - [[Ideal Week]] · [[Core Values]] · [[Life Theme]]

@@ -79,10 +79,10 @@ try {
     }
     if(screen==='focus'){
       assert.ok(await page.locator('.life-os-workload-segment').count()>0);
-      await page.getByRole('button',{name:'Overdue · 1',exact:true}).click();
+      await page.getByRole('button',{name:'已逾期 · 1',exact:true}).click();
       assert.equal(await page.locator('.life-os-task-row').count(),1);
       assert.ok((await page.locator('.life-os-task-row').innerText()).includes('overdue'));
-      await page.getByRole('button',{name:/^All ·/}).click();
+      await page.getByRole('button',{name:/^全部 ·/}).click();
     }
     if(screen==='create'){
       await page.locator('.life-os-pipeline-card').filter({hasText:'Articles'}).click();
@@ -109,37 +109,37 @@ try {
     }
     if(screen==='plan'){
       assert.equal(await page.locator('.life-os-calendar-day').count(),42);
-      await page.getByRole('button',{name:'2026-09-09: Open daily note',exact:true}).click();
+      await page.getByRole('button',{name:'2026-09-09: 打开日记',exact:true}).click();
       assert.equal(await page.evaluate(()=>window.opened.at(-1)?.path),'01 Journal/Daily/2026-09-09.md');
-      await page.getByRole('button',{name:'Next month',exact:true}).click();
+      await page.getByRole('button',{name:'下个月',exact:true}).click();
       assert.ok((await page.locator('.life-os-calendar h2').innerText()).includes('October'));
-      await page.getByRole('button',{name:'This month',exact:true}).click();
+      await page.getByRole('button',{name:'本月',exact:true}).click();
     }
     if(screen==='review'){
-      await page.getByRole('button',{name:'7 days',exact:true}).click();
+      await page.getByRole('button',{name:'7 天',exact:true}).click();
       assert.equal(await page.locator('.life-os-effort-column').count(),7);
       await page.locator('.life-os-effort-column[role="button"]').first().press('Enter');
       assert.ok(await page.evaluate(()=>window.opened.at(-1)?.path.startsWith('01 Journal/Daily/')));
-      await page.getByText('Read daily values',{exact:true}).click();
+      await page.getByText('查看每日数值',{exact:true}).click();
       assert.equal(await page.locator('.life-os-chart-table tbody tr').count(),7);
-      await page.getByRole('button',{name:/Open scored retreat/}).click();
+      await page.getByRole('button',{name:/打开打分的静修/}).click();
       assert.ok(await page.evaluate(()=>window.opened.at(-1)?.path.startsWith('02 Retreats/')));
     }
   }
   await page.evaluate(()=>{window.view.activeScreen='home';window.view.render();window.previousPreview=window.view.previewBrain;});
   await page.locator('.life-os-display-options summary').click();
-  await page.getByRole('button',{name:'Hide optional visuals',exact:true}).click();
+  await page.getByRole('button',{name:'隐藏可选图形',exact:true}).click();
   assert.equal(await page.locator('.life-os-brain-preview').count(),0);
   assert.ok(await page.evaluate(()=>window.previousPreview.ctx===null));
   await page.locator('.life-os-display-options summary').click();
   await page.getByLabel('Items per list',{exact:true}).selectOption('3');
   assert.equal(await page.evaluate(()=>window.view.itemLimit),3);
   await page.locator('.life-os-display-options summary').click();
-  await page.getByRole('button',{name:'Restore view defaults',exact:true}).click();
+  await page.getByRole('button',{name:'恢复默认视图',exact:true}).click();
   assert.equal(await page.locator('.life-os-brain-preview canvas').count(),1);
-  await page.getByRole('button',{name:/Explore Brain/}).click();
+  await page.getByRole('button',{name:/打开大脑/}).click();
   assert.equal(await page.locator('.life-os-brain-embedded canvas').count(),1);
-  await page.getByRole('button',{name:'Home',exact:true}).click();
+  await page.getByRole('button',{name:'首页',exact:true}).click();
   for(const width of [900,620,390]){
     await page.setViewportSize({width,height:900});
     for (const screen of ['home','today','plan','review','focus','projects','people','create','library','ai']) {
@@ -149,10 +149,10 @@ try {
   }
   await page.setViewportSize({width:1440,height:1000});
   await page.locator('.life-os-display-options summary').click();
-  await page.getByRole('button',{name:'Use compact spacing',exact:true}).click();
+  await page.getByRole('button',{name:'使用紧凑间距',exact:true}).click();
   assert.equal(await page.locator('.life-os-app-frame.is-compact').count(),1);
   for(let pass=0;pass<3;pass++){
-    await page.getByRole('button',{name:'Brain',exact:true}).click();
+    await page.getByRole('button',{name:'大脑',exact:true}).click();
     assert.equal(await page.locator('.life-os-rail').count(),1);
     assert.equal(await page.locator('.life-os-brain-embedded canvas').count(),1);
     assert.equal(await page.locator('.life-os-nav-button[aria-current="page"]').innerText(),'Brain');
@@ -162,14 +162,14 @@ try {
     await canvas.press('ArrowRight');
     assert.ok(await page.evaluate(()=>window.view.embeddedBrain.yaw>0.28));
     if(pass===0)await page.screenshot({path:'/tmp/life-os-brain-sidebar.png',fullPage:true});
-    await page.getByRole('button',{name:'Home',exact:true}).click();
+    await page.getByRole('button',{name:'首页',exact:true}).click();
     assert.equal(await page.locator('.life-os-brain-embedded').count(),0);
     assert.ok(await page.evaluate(()=>window.previousBrain.ctx===null && window.view.embeddedBrain===null));
   }
   assert.deepEqual(errors,[]);
   await page.evaluate(()=>{window.view.activeScreen='home';window.view.render();});
   await page.locator('.life-os-display-options summary').click();
-  await page.getByRole('button',{name:"Hide this module's visual",exact:true}).click();
+  await page.getByRole('button',{name:'隐藏本模块图形',exact:true}).click();
   assert.equal(await page.locator('.life-os-brain-preview').count(),0);
   await page.evaluate(()=>{window.view.activeScreen='ai';window.view.render();});
   assert.equal(await page.locator('.life-os-ai-diagram').count(),1);
